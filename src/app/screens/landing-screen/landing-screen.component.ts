@@ -12,9 +12,11 @@ export class LandingScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    const data = this.smartsheet.getSheets().subscribe(sheets => {
-      console.log('SHEETS:::: ', sheets);
-    });
+    setTimeout(() => {
+      const row = this.smartsheet.getRow('DN21988181');
+      console.log('Row:::: ', row);
+    }, 5000)
+
   }
 
 }
