@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "cpprod && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cpdev": "cp ./tsconfig.dev.json ./tsconfig.json",
+    "cpprod": "cp ./tsconfig.prod.json ./tsconfig.json"
   },
   "private": true,
   "dependencies": {
