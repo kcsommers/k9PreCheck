@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ScreensRoutingModule } from './screens-routing.module';
 import { LandingScreenComponent } from './landing-screen/landing-screen.component';
+import { WidgetsModule } from '../widgets/widgets.module';
 
 const screens = [
   LandingScreenComponent
@@ -9,7 +10,8 @@ const screens = [
 @NgModule({
   declarations: screens,
   imports: [
-    ScreensRoutingModule
+    ScreensRoutingModule,
+    WidgetsModule
   ],
   exports: screens,
   providers: []

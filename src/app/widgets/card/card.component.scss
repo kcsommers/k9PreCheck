@@ -1,0 +1,8 @@
+@import '_variables';
+:host {
+    .k9-card-wrap {
+        background-color: white;
+        box-shadow: $k9-box-shadow;
+        padding: $k9-spacing-md;
+    }
+}
