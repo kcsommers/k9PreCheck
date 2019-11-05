@@ -1,0 +1,28 @@
+@import '_variables';
+:host {
+    .k9-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 $k9-spacing-lg;
+        background-color: white;
+        height: 150px;
+    }
+    .k9-logo-wrap {
+        display: flex;
+    }
+    img.k9-logo {
+        display: block;
+        width: 100px;
+    }
+    .k9-search-wrap {
+        position: relative;
+    }
+    img.k9-dog {
+        display: inline-block;
+        width: 150px;
+        position: absolute;
+        top: 100px;
+        right: 40%;
+    }
+}

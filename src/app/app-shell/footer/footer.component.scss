@@ -1,0 +1,16 @@
+@import '_variables';
+:host {
+    .k9-footer {
+        height: 150px;
+        align-items: center;
+        display: flex;
+        padding: 0 $k9-spacing-lg;
+        background-color: white;
+    }
+    .k9-footer-terms-wrap {
+        flex: 1;
+    }
+    .k9-footer-copyright-wrap {
+        flex: 0.5;
+    }
+}
