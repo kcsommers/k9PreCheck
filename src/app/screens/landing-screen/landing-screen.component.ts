@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SmartsheetService } from 'src/app/services/smartsheet.service';
 
 @Component({
   selector: 'app-landing-screen',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private smartsheet: SmartsheetService) {
+  }
 
   ngOnInit() {
+    const data = this.smartsheet.getSheets().subscribe(sheets => {
+      console.log('SHEETS:::: ', sheets);
+    });
   }
 
 }

@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  smartsheetToken: 's49ade7q7u504pa904twt2m9wx'
 };
 
 /*
