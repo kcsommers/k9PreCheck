@@ -3,10 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-
-enum ColumnIds {
-  AKC_NUMBER = 8443169206495108
-}
+import { ColumnIds } from '../core/public-api';
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +21,21 @@ export class SmartsheetService {
         if (sheet && sheet.rows) {
           this._k9Rows = sheet.rows;
         }
-        console.log('Rows:::: ', this._k9Rows)
       });
   }
 
   public getRow(id: string) {
-    return this._k9Rows.find(r => r.cells.some(c => c.columnId === ColumnIds.AKC_NUMBER && c.value === id));
+    const row = this._k9Rows.find(r => r.cells.some(c => (
+      (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURNING_AIRWAY_BILL) && c.value === id))
+    );
+    if (row && row.cells && row.cells.length) {
+      const newRow = {};
+      row.cells.forEach(cell => {
+        newRow[cell.columnId] = cell.value;
+      });
+      return newRow;
+    }
+    return null;
   }
 
   public getSheets(): Observable<any> {

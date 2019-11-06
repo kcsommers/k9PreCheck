@@ -19,17 +19,11 @@
       "dom"
     ],
     "paths": {
-      "@k9/widgets": [
-        "projects/widgets/src/public-api.ts"
-      ],
-      "@k9/widgets/*": [
-        "dist/widgets/*"
-      ],
       "@k9/core": [
-        "projects/core/src/public-api.ts"
+        "app/core/src/public-api.ts"
       ],
       "@k9/core/*": [
-        "dist/core/*"
+        "app/core/*"
       ]
     }
   },

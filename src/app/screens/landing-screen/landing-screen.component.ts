@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SmartsheetService } from 'src/app/services/smartsheet.service';
 import { BehaviorSubject } from 'rxjs';
+import { ColumnIds } from '../../core/column-ids.enum';
 
 @Component({
   selector: 'app-landing-screen',
@@ -10,20 +11,24 @@ import { BehaviorSubject } from 'rxjs';
 export class LandingScreenComponent implements OnInit {
   public searchError$ = new BehaviorSubject(false);
   public data$ = new BehaviorSubject(null);
+  public columnIds = ColumnIds;
 
   constructor(private smartsheet: SmartsheetService) {
   }
 
   ngOnInit() {
+    this.smartsheet.getK9PreCheckSheet().subscribe(sheet => {
+      const hmm = sheet.columns.map(c => `${c.title.toUpperCase().replace(' ', '_')} = ${c.id}`);
+    });
   }
 
   public doSearch(searchTerm: string) {
     if (this.searchError$.value) {
       this.searchError$.next(false);
     }
-    // DN21988181
+    // D1818177
     const row = this.smartsheet.getRow(searchTerm);
-    console.log('Row:::: ', row);
+    console.log('Row:::: ', row[this.columnIds.NOTES]);
     if (row) {
       this.data$.next(row);
     } else {

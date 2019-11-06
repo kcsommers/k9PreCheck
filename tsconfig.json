@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@k9/core": [
+        "./app/core/src/public-api.ts"
+      ],
+      "@k9/core/*": [
+        "./app/core/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
