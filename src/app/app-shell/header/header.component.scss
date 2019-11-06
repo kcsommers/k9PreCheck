@@ -38,6 +38,19 @@
         right: 40%;
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+    p.k9-toc-link {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        text-align: center;
+        padding: $k9-spacing-md 0;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: $dark;
+        a {
+            color: $blue;
+        }
+    }
 }
 
 @keyframes fadeIn {
