@@ -41,14 +41,26 @@ export class SmartsheetService {
   }
 
   public getSheets(): Observable<any> {
-    return this.http.get('/api/sheets', { headers: this._headers });
+    return this.http.get('https://api.smartsheet.com/2.0/sheets', { headers: this._headers });
   }
 
   public getK9PreCheckSheet(): Observable<any> {
-    return this.http.get('/api/sheets/8529102538860420', { headers: this._headers });
+    return this.http.get('https://api.smartsheet.com/2.0/sheets/8529102538860420', { headers: this._headers });
   }
 
   public searchK9PreCheckSheet(): Observable<any> {
-    return this.http.get('/api/search/sheets/8529102538860420?query=DN21988181', { headers: this._headers });
+    return this.http.get('https://api.smartsheet.com/2.0//search/sheets/8529102538860420?query=DN21988181', { headers: this._headers });
   }
+
+  // public getSheets(): Observable<any> {
+  //   return this.http.get('/api/sheets', { headers: this._headers });
+  // }
+
+  // public getK9PreCheckSheet(): Observable<any> {
+  //   return this.http.get('/api/sheets/8529102538860420', { headers: this._headers });
+  // }
+
+  // public searchK9PreCheckSheet(): Observable<any> {
+  //   return this.http.get('/api/search/sheets/8529102538860420?query=DN21988181', { headers: this._headers });
+  // }
 }
