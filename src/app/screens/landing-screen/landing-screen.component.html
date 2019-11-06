@@ -4,12 +4,13 @@
     (search)="doSearch($event)"
 ></k9-header>
 <section class="k9-landing-body">
+    <div class="k9-landing-height-guard"></div>
     <div
         *ngIf="data$ | async as row"
         class="k9-landing-result-container"
     >
         <k9-card>
-            <p card-header>Dog</p>
+            <h4 card-header>Dog</h4>
             <div card-body>
                 <div class="k9-dog-card-dog-info">
                     <div class="k9-dog-card-img-wrap">
@@ -17,9 +18,7 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>
-                            {{row[columnIds.CALL_NAME]}}, {{row[columnIds.BREED]}}
-                        </p>
+                        <k9-text [content]="row[columnIds.CALL_NAME] + ', ' + row[columnIds.BREED]"></k9-text>
                     </div>
 
                     <div class="k9-dog-card-img-wrap">
@@ -27,9 +26,7 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>
-                            Crate, {{row[columnIds.CRATE_TYPE]}}, {{row[columnIds.CRATE_SIZE]}}
-                        </p>
+                        <k9-text [content]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"></k9-text>
                     </div>
 
                     <div class="k9-dog-card-img-wrap">
@@ -37,7 +34,7 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>Water Receptacle</p>
+                        <k9-text>Water Receptacle</k9-text>
                     </div>
                 </div>
 
@@ -47,18 +44,18 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>{{row[columnIds.OWNER_NAME]}}</p>
+                        <k9-text>{{row[columnIds.OWNER_NAME]}}</k9-text>
                     </div>
                     <div class="k9-dog-card-owner-info-wrap">
-                        <p>{{row[columnIds.ADDRESS]}},</p>
-                        <p>
+                        <k9-text>{{row[columnIds.ADDRESS]}},</k9-text>
+                        <k9-text>
                             {{row[columnIds.CITY]}}, {{row[columnIds.STATE]}} {{row[columnIds.ZIP]}}
-                        </p>
-                        <p>{{row[columnIds.PHONE]}}</p>
-                        <p>{{row[columnIds.EMAIL]}}</p>
-                        <p>
+                        </k9-text>
+                        <k9-text>{{row[columnIds.PHONE]}}</k9-text>
+                        <k9-text>{{row[columnIds.EMAIL]}}</k9-text>
+                        <k9-text>
                             Govt ID: {{row[columnIds.GOV_ID] ? 'Yes' : 'No'}}
-                        </p>
+                        </k9-text>
                     </div>
                 </div>
 
@@ -66,7 +63,7 @@
         </k9-card>
 
         <k9-card>
-            <p card-header>COSIGNEES</p>
+            <h4 card-header>COSIGNEES</h4>
             <div
                 card-body
                 class="k9-cosignee-card-cosignee-wrap"
@@ -77,15 +74,13 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>{{row[columnIds.CONSIGNEE_NAME1]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
                     </div>
                     <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <p>{{row[columnIds.CONSIGNEE1_ADDRESS]}},</p>
-                        <p>
-                            {{row[columnIds.CONSIGNEE1_CITY]}}, {{row[columnIds.CONSIGNEE1_STATE]}} {{row[columnIds.CONSIGNEE1_ZIP_CODE]}}
-                        </p>
-                        <p>{{row[columnIds.CONSIGNEE1_PHONE]}}</p>
-                        <p>{{row[columnIds.CONSIGNEE1_EMAIL]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE1_ADDRESS] + ', '"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE1_ZIP_CODE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE1_PHONE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE1_EMAIL]"></k9-text>
                     </div>
                 </div>
                 <div class="k9-cosignee-card-cosignee-info">
@@ -94,15 +89,13 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>{{row[columnIds.CONSIGNEE_NAME1]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
                     </div>
                     <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <p>{{row[columnIds.CONSIGNEE2_ADDRESS]}},</p>
-                        <p>
-                            {{row[columnIds.CONSIGNEE2_CITY]}}, {{row[columnIds.CONSIGNEE1_STATE]}} {{row[columnIds.CONSIGNEE2_ZIP_CODE]}}
-                        </p>
-                        <p>{{row[columnIds.CONSIGNEE2_PHONE]}}</p>
-                        <p>{{row[columnIds.CONSIGNEE2_EMAIL]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE2_ADDRESS] + ', '"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE2_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE2_ZIP_CODE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE2_PHONE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE2_EMAIL]"></k9-text>
                     </div>
                 </div>
                 <div class="k9-cosignee-card-cosignee-info">
@@ -111,32 +104,28 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <p>{{row[columnIds.CONSIGNEE_NAME1]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
                     </div>
                     <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <p>{{row[columnIds.CONSIGNEE3_ADDRESS]}},</p>
-                        <p>
-                            {{row[columnIds.CONSIGNEE1_CITY]}}, {{row[columnIds.CONSIGNEE3_STATE]}} {{row[columnIds.CONSIGNEE3_ZIP_CODE]}}
-                        </p>
-                        <p>{{row[columnIds.CONSIGNEE3_PHONE]}}</p>
-                        <p>{{row[columnIds.CONSIGNEE3_EMAIL]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE3_ADDRESS] + ', '"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE3_STATE] + ' ' + row[columnIds.CONSIGNEE3_ZIP_CODE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE3_PHONE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE3_EMAIL]"></k9-text>
                     </div>
                 </div>
                 <div class="k9-cosignee-card-cosignee-info">
                     <div class="k9-cosignee-card-img-wrap">
                         <img
                             [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
+                            [alt]="'Picture of Dog'"
                         >
-                        <p>{{row[columnIds.CONSIGNEE_NAME1]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
                     </div>
                     <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <p>{{row[columnIds.CONSIGNEE4_ADDRESS]}},</p>
-                        <p>
-                            {{row[columnIds.CONSIGNEE4_CITY]}}, {{row[columnIds.CONSIGNEE4_STATE]}} {{row[columnIds.CONSIGNEE4_ZIP_CODE]}}
-                        </p>
-                        <p>{{row[columnIds.CONSIGNEE4_PHONE]}}</p>
-                        <p>{{row[columnIds.CONSIGNEE4_EMAIL]}}</p>
+                        <k9-text [content]="row[columnIds.CONSIGNEE4_ADDRESS] + ','"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE4_CITY] + ', ' + row[columnIds.CONSIGNEE4_STATE] + ' ' + row[columnIds.CONSIGNEE4_ZIP_CODE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE4_PHONE]"></k9-text>
+                        <k9-text [content]="row[columnIds.CONSIGNEE4_EMAIL]"></k9-text>
                     </div>
                 </div>
 
@@ -144,52 +133,36 @@
         </k9-card>
 
         <k9-card>
-            <p card-header>Travel Info</p>
+            <h4 card-header>Travel Info</h4>
             <div
                 card-body
                 class="k9-travel-card-wrap"
             >
                 <div class="k9-travel-card-info-wrap">
                     <h4>Event</h4>
-                    <p>{{row[columnIds.EVENT_NAME]}}</p>
-                    <p>Entry Confirmation</p>
-                    <p>{{row[columnIds.EVENT_CONFIRMATION]}}</p>
-                    <p>{{row[columnIds.EVENT_LOCATION]}}</p>
-                    <p>{{row[columnIds.EVENT_START_DATE]}}</p>
-                    <p>{{row[columnIds.EVENT_FINISH_DATE]}}</p>
+                    <k9-text [content]="row[columnIds.EVENT_NAME]"></k9-text>
+                    <k9-text [content]="'Entry Confirmation'"></k9-text>
+                    <k9-text [content]="row[columnIds.EVENT_CONFIRMATION]"></k9-text>
+                    <k9-text [content]="row[columnIds.EVENT_LOCATION]"></k9-text>
+                    <k9-text [content]="row[columnIds.EVENT_START_DATE]"></k9-text>
+                    <k9-text [content]="row[columnIds.EVENT_FINISH_DATE]"></k9-text>
                 </div>
                 <div class="k9-travel-card-info-wrap">
                     <h4>Outbound</h4>
-                    <p>
-                        Airbill number: {{row[columnIds.OUTBOUND_AIRWAY_BILL]}}
-                    </p>
-                    <p>
-                        Departure date: {{row[columnIds.DESIRED_DEPARTURE_DATE]}}
-                    </p>
-                    <p>Airline: {{row[columnIds.AIRLINE]}}</p>
-                    <p>
-                        Originating airport: {{row[columnIds.ORIGINATING_AIRPORT]}}
-                    </p>
-                    <p>
-                        Destination airport: {{row[columnIds.DESTINATION_AIRPORT]}}
-                    </p>
+                    <k9-text [content]="'Airbill number: ' + row[columnIds.OUTBOUND_AIRWAY_BILL]"></k9-text>
+                    <k9-text [content]="'Departure date: ' + row[columnIds.DESIRED_DEPARTURE_DATE]"></k9-text>
+                    <k9-text [content]="'Airline: ' + row[columnIds.AIRLINE]"></k9-text>
+                    <k9-text [content]="'Originating airport: ' + row[columnIds.ORIGINATING_AIRPORT]"></k9-text>
+                    <k9-text [content]="'Destination airport: ' + row[columnIds.DESTINATION_AIRPORT]"></k9-text>
                 </div>
 
                 <div class="k9-travel-card-info-wrap">
                     <h4>Return</h4>
-                    <p>
-                        Airbill number: {{row[columnIds.RETURNING_AIRWAY_BILL]}}
-                    </p>
-                    <p>
-                        Departure date: {{row[columnIds.DESIRED_RETURN_DATE]}}
-                    </p>
-                    <p>Airline: {{row[columnIds.AIRLINE]}}</p>
-                    <p>
-                        Originating airport: {{row[columnIds.DESTINATION_AIRPORT]}}
-                    </p>
-                    <p>
-                        Destination airport: {{row[columnIds.ORIGINATING_AIRPORT]}}
-                    </p>
+                    <k9-text [content]="'Airbill number: ' + row[columnIds.RETURNING_AIRWAY_BILL]"></k9-text>
+                    <k9-text [content]="'Departure date: ' + row[columnIds.DESIRED_RETURN_DATE]"></k9-text>
+                    <k9-text [content]="'Airline: ' + row[columnIds.AIRLINE]"></k9-text>
+                    <k9-text [content]="'Originating airport: ' + row[columnIds.DESTINATION_AIRPORT]"></k9-text>
+                    <k9-text [content]="'Destination airport: ' + row[columnIds.ORIGINATING_AIRPORT]"></k9-text>
                 </div>
             </div>
         </k9-card>

@@ -2,11 +2,14 @@
 :host {
     .k9-landing-body {
         background-color: $offwhite;
-        min-height: calc(100vh - 300px);
+        min-height: calc(100vh - 400px);
         padding: $k9-spacing-lg;
     }
     .k9-landing-result-container {
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    .k9-landing-height-guard {
+        min-height: 250px;
     }
 }
 

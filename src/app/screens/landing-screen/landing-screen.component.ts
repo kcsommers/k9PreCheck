@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ColumnIds } from '../../core/column-ids.enum';
 
 @Component({
-  selector: 'app-landing-screen',
+  selector: 'k9-landing-screen',
   templateUrl: './landing-screen.component.html',
   styleUrls: ['./landing-screen.component.scss']
 })

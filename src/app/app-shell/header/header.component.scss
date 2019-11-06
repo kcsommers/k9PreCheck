@@ -19,6 +19,9 @@
     }
     .k9-logo-wrap {
         display: flex;
+        k9-text {
+            margin-top: $k9-spacing-md;
+        }
     }
     img.k9-logo {
         display: block;

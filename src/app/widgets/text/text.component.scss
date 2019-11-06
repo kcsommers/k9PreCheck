@@ -1,0 +1,7 @@
+@import '_variables';
+
+:host {
+    p:not(:last-child) {
+        margin-bottom: $k9-spacing-sm;
+    }
+}

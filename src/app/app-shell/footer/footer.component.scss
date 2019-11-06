@@ -1,11 +1,10 @@
 @import '_variables';
 :host {
     .k9-footer {
-        height: 150px;
-        align-items: center;
         display: flex;
-        padding: 0 $k9-spacing-lg;
+        padding: $k9-spacing-lg 4rem;
         background-color: white;
+        height: 250px;
     }
     .k9-footer-terms-wrap {
         flex: 1;
