@@ -5,13 +5,15 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ColumnIds } from '../core/public-api';
 
+const smartsheetToken = 's49ade7q7u504pa904twt2m9wx';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SmartsheetService {
   private _k9Rows: any[] = [];
   private _headers = new HttpHeaders({
-    'Authorization': `Bearer ${environment.smartsheetToken}`,
+    'Authorization': `Bearer ${smartsheetToken}`,
     'Content-Type': 'application/json'
   });
 

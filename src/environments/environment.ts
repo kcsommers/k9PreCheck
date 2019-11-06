@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  smartsheetToken: 's49ade7q7u504pa904twt2m9wx'
 };
 
 /*
