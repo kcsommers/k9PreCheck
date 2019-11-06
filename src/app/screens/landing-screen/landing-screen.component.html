@@ -1,8 +1,17 @@
-<k9-header></k9-header>
+<k9-header
+    [searchError$]="searchError$"
+    [data$]="data$"
+    (search)="doSearch($event)"
+></k9-header>
 <section class="k9-landing-body">
-    <k9-card>
-        <p card-header>Dog</p>
-        <div card-body>body</div>
-    </k9-card>
+    <div
+        *ngIf="data$ | async as row"
+        class="k9-landing-result-container"
+    >
+        <k9-card>
+            <p card-header>Dog</p>
+            <div card-body>body</div>
+        </k9-card>
+    </div>
 </section>
 <k9-footer></k9-footer>

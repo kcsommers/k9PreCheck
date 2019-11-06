@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { WidgetsModule } from '../widgets/widgets.module';
+import { CommonModule } from '@angular/common';
 
 const components = [
   FooterComponent,
@@ -11,7 +12,8 @@ const components = [
 @NgModule({
   declarations: components,
   imports: [
-    WidgetsModule
+    WidgetsModule,
+    CommonModule
   ],
   exports: components,
   providers: []

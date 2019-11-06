@@ -1,7 +1,8 @@
 <input
     class="k9-searchbar"
-    [placeholder]="'START HERE! ENTER AKC NUMBER'"
     type="text"
-    [(value)]="searchTerm"
+    [placeholder]="placeholder"
+    [(ngModel)]="searchTerm"
+    (focus)="focused = true"
+    (blur)="focused = false"
 >
-<p class="k9-search-error-text">NOT FOUND. PLEASE TRY AGAIN.</p>

@@ -8,8 +8,18 @@
         <p>We Ship Dogs</p>
     </div>
     <div class="k9-search-wrap">
-        <k9-searchbar></k9-searchbar>
+        <k9-searchbar
+            [placeholder]="'START HERE! ENTER AKC NUMBER'"
+            (search)="search.emit($event)"
+        ></k9-searchbar>
+        <p
+            *ngIf="searchError$ | async"
+            class="k9-search-error-text"
+        >
+            NOT FOUND. PLEASE TRY AGAIN.
+        </p>
         <img
+            *ngIf="!(data$ | async)"
             class="k9-dog"
             src="../../../assets/images/dog.png"
             alt="Dog"

@@ -1,14 +1,5 @@
 @import '_variables';
 :host {
-    .k9-search-error-text {
-        color: $error;
-        text-align: center;
-        padding: $k9-spacing-md 0;
-        position: absolute;
-        width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
     .k9-searchbar {
         width: 400px;
         padding: $k9-spacing-md;

@@ -3,6 +3,7 @@ import { ScreensRoutingModule } from './screens-routing.module';
 import { LandingScreenComponent } from './landing-screen/landing-screen.component';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { AppShellModule } from '../app-shell/app-shell.module';
+import { CommonModule } from '@angular/common';
 
 const screens = [
   LandingScreenComponent
@@ -13,7 +14,8 @@ const screens = [
   imports: [
     ScreensRoutingModule,
     WidgetsModule,
-    AppShellModule
+    AppShellModule,
+    CommonModule
   ],
   exports: screens,
   providers: []
