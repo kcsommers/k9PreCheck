@@ -4,69 +4,114 @@
     (search)="doSearch($event)"
 ></k9-header>
 <section class="k9-landing-body">
-    <div class="k9-landing-height-guard"></div>
+    <div
+        *ngIf="!(data$ | async)"
+        class="k9-landing-height-guard"
+    ></div>
     <div
         *ngIf="data$ | async as row"
         class="k9-landing-result-container"
     >
+
         <k9-card>
-            <h4 card-header>Dog</h4>
-            <div card-body>
+
+            <div
+                class="k9-dog-card"
+                card-body
+            >
                 <div class="k9-dog-card-dog-info">
-                    <div class="k9-dog-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
-                        >
-                        <k9-text [content]="row[columnIds.CALL_NAME] + ', ' + row[columnIds.BREED]"></k9-text>
+                    <h4>Dog</h4>
+                    <div class="k9-dog-card-dog-info-wrap">
+                        <div class="k9-dog-card-img-wrap">
+                            <img
+                                [src]="row[columnIds.NOTES]"
+                                alt="Picture of Dog"
+                            >
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [fontWeight]="'bold'"
+                                [content]="row[columnIds.CALL_NAME] + ', ' + row[columnIds.BREED]"
+                            ></k9-text>
+                        </div>
+
+                        <div class="k9-dog-card-img-wrap">
+                            <img
+                                [src]="row[columnIds.NOTES]"
+                                alt="Picture of Dog"
+                            >
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"
+                            ></k9-text>
+                        </div>
+
+                        <div class="k9-dog-card-img-wrap">
+                            <img
+                                [src]="row[columnIds.NOTES]"
+                                alt="Picture of Dog"
+                            >
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="'Water Receptacle'"
+                            ></k9-text>
+                        </div>
                     </div>
 
-                    <div class="k9-dog-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
-                        >
-                        <k9-text [content]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"></k9-text>
-                    </div>
-
-                    <div class="k9-dog-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
-                        >
-                        <k9-text>Water Receptacle</k9-text>
-                    </div>
                 </div>
 
                 <div class="k9-dog-card-owner-info">
-                    <div class="k9-dog-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
-                        >
-                        <k9-text>{{row[columnIds.OWNER_NAME]}}</k9-text>
-                    </div>
+                    <h4>Owner</h4>
                     <div class="k9-dog-card-owner-info-wrap">
-                        <k9-text>{{row[columnIds.ADDRESS]}},</k9-text>
-                        <k9-text>
-                            {{row[columnIds.CITY]}}, {{row[columnIds.STATE]}} {{row[columnIds.ZIP]}}
-                        </k9-text>
-                        <k9-text>{{row[columnIds.PHONE]}}</k9-text>
-                        <k9-text>{{row[columnIds.EMAIL]}}</k9-text>
-                        <k9-text>
-                            Govt ID: {{row[columnIds.GOV_ID] ? 'Yes' : 'No'}}
-                        </k9-text>
+                        <div class="k9-dog-card-img-wrap">
+                            <img
+                                [src]="row[columnIds.NOTES]"
+                                alt="row[columnIds.OWNER_NAME]"
+                            >
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [fontWeight]="'bold'"
+                                [content]="row[columnIds.OWNER_NAME]"
+                            ></k9-text>
+                        </div>
+                        <div class="k9-card-contact-wrap">
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="row[columnIds.ADDRESS]"
+                            ></k9-text>
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="row[columnIds.CITY] + ', ' + row[columnIds.STATE] + ' ' + row[columnIds.ZIP]"
+                            ></k9-text>
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="row[columnIds.PHONE]"
+                            ></k9-text>
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="row[columnIds.EMAIL]"
+                            ></k9-text>
+                            <k9-text
+                                [fontSize]="'0.8rem'"
+                                [content]="'Govt ID: ' + (row[columnIds.GOV_ID] ? 'Yes' : 'No')"
+                            ></k9-text>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
         </k9-card>
 
         <k9-card>
-            <h4 card-header>COSIGNEES</h4>
+            <div
+                card-header
+                class="k9-card-header"
+            >
+                <h4>COSIGNEES</h4>
+            </div>
             <div
                 card-body
-                class="k9-cosignee-card-cosignee-wrap"
+                class="k9-cosignee-card"
             >
                 <div class="k9-cosignee-card-cosignee-info">
                     <div class="k9-cosignee-card-img-wrap">
@@ -74,58 +119,127 @@
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE_NAME1]"
+                        ></k9-text>
                     </div>
-                    <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <k9-text [content]="row[columnIds.CONSIGNEE1_ADDRESS] + ', '"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE1_ZIP_CODE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE1_PHONE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE1_EMAIL]"></k9-text>
+                    <div class="k9-card-contact-wrap">
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE1_ADDRESS] + ', '"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE1_ZIP_CODE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE1_PHONE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE1_EMAIL]"
+                        ></k9-text>
                     </div>
                 </div>
-                <div class="k9-cosignee-card-cosignee-info">
+                <div
+                    *ngIf="row[columnIds.CONSIGNEE2_NAME]"
+                    class="k9-cosignee-card-cosignee-info"
+                >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE_NAME2]"
+                        ></k9-text>
                     </div>
-                    <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <k9-text [content]="row[columnIds.CONSIGNEE2_ADDRESS] + ', '"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE2_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE2_ZIP_CODE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE2_PHONE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE2_EMAIL]"></k9-text>
+                    <div class="k9-card-contact-wrap">
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE2_ADDRESS] + ', '"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE2_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE2_ZIP_CODE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE2_PHONE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE2_EMAIL]"
+                        ></k9-text>
                     </div>
                 </div>
-                <div class="k9-cosignee-card-cosignee-info">
+                <div
+                    *ngIf="row[columnIds.CONSIGNEE3_NAME]"
+                    class="k9-cosignee-card-cosignee-info"
+                >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
                             [src]="row[columnIds.NOTES]"
                             alt="Picture of Dog"
                         >
-                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE3_NAME]"
+                        ></k9-text>
                     </div>
-                    <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <k9-text [content]="row[columnIds.CONSIGNEE3_ADDRESS] + ', '"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE3_STATE] + ' ' + row[columnIds.CONSIGNEE3_ZIP_CODE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE3_PHONE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE3_EMAIL]"></k9-text>
+                    <div class="k9-card-contact-wrap">
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE3_ADDRESS] + ', '"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE3_STATE] + ' ' + row[columnIds.CONSIGNEE3_ZIP_CODE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE3_PHONE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE3_EMAIL]"
+                        ></k9-text>
                     </div>
                 </div>
-                <div class="k9-cosignee-card-cosignee-info">
+                <div
+                    *ngIf="row[columnIds.CONSIGNEE4_NAME]"
+                    class="k9-cosignee-card-cosignee-info"
+                >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
                             [src]="row[columnIds.NOTES]"
                             [alt]="'Picture of Dog'"
                         >
-                        <k9-text [content]="row[columnIds.CONSIGNEE_NAME1]"></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE_NAME4]"
+                        ></k9-text>
                     </div>
-                    <div class="k9-cosignee-card-cosignee-info-wrap">
-                        <k9-text [content]="row[columnIds.CONSIGNEE4_ADDRESS] + ','"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE4_CITY] + ', ' + row[columnIds.CONSIGNEE4_STATE] + ' ' + row[columnIds.CONSIGNEE4_ZIP_CODE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE4_PHONE]"></k9-text>
-                        <k9-text [content]="row[columnIds.CONSIGNEE4_EMAIL]"></k9-text>
+                    <div class="k9-card-contact-wrap">
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE4_ADDRESS] + ','"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE4_CITY] + ', ' + row[columnIds.CONSIGNEE4_STATE] + ' ' + row[columnIds.CONSIGNEE4_ZIP_CODE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE4_PHONE]"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="row[columnIds.CONSIGNEE4_EMAIL]"
+                        ></k9-text>
                     </div>
                 </div>
 
@@ -133,36 +247,107 @@
         </k9-card>
 
         <k9-card>
-            <h4 card-header>Travel Info</h4>
+            <div
+                card-header
+                class="k9-card-header k9-travel-card-header"
+            >
+                <h4>Travel Info</h4>
+                <k9-text
+                    [fontSize]="'1rem'"
+                    [content]="'Journey#: ' + row[columnIds.JOURNEY]"
+                    [fontWeight]="'bold'"
+                ></k9-text>
+            </div>
             <div
                 card-body
-                class="k9-travel-card-wrap"
+                class="k9-travel-card"
             >
                 <div class="k9-travel-card-info-wrap">
-                    <h4>Event</h4>
-                    <k9-text [content]="row[columnIds.EVENT_NAME]"></k9-text>
-                    <k9-text [content]="'Entry Confirmation'"></k9-text>
-                    <k9-text [content]="row[columnIds.EVENT_CONFIRMATION]"></k9-text>
-                    <k9-text [content]="row[columnIds.EVENT_LOCATION]"></k9-text>
-                    <k9-text [content]="row[columnIds.EVENT_START_DATE]"></k9-text>
-                    <k9-text [content]="row[columnIds.EVENT_FINISH_DATE]"></k9-text>
+                    <k9-text
+                        [fontSize]="'1.2rem'"
+                        [content]="'EVENT'"
+                        [fontWeight]="'bold'"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="row[columnIds.EVENT_NAME]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [fontWeight]="'bold'"
+                        [content]="'Entry Confirmation'"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="row[columnIds.EVENT_CONFIRMATION]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Location: ' + row[columnIds.EVENT_LOCATION]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Start Date: ' + row[columnIds.EVENT_START_DATE]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'End Date: ' + row[columnIds.EVENT_FINISH_DATE]"
+                    ></k9-text>
                 </div>
                 <div class="k9-travel-card-info-wrap">
-                    <h4>Outbound</h4>
-                    <k9-text [content]="'Airbill number: ' + row[columnIds.OUTBOUND_AIRWAY_BILL]"></k9-text>
-                    <k9-text [content]="'Departure date: ' + row[columnIds.DESIRED_DEPARTURE_DATE]"></k9-text>
-                    <k9-text [content]="'Airline: ' + row[columnIds.AIRLINE]"></k9-text>
-                    <k9-text [content]="'Originating airport: ' + row[columnIds.ORIGINATING_AIRPORT]"></k9-text>
-                    <k9-text [content]="'Destination airport: ' + row[columnIds.DESTINATION_AIRPORT]"></k9-text>
+                    <k9-text
+                        [fontSize]="'1.2rem'"
+                        [content]="'OUTBOUND'"
+                        [fontWeight]="'bold'"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Airbill number: ' + row[columnIds.OUTBOUND_AIRWAY_BILL]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Departure date: ' + row[columnIds.DESIRED_DEPARTURE_DATE]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Airline: ' + row[columnIds.AIRLINE]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Originating airport: ' + row[columnIds.ORIGINATING_AIRPORT]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Destination airport: ' + row[columnIds.DESTINATION_AIRPORT]"
+                    ></k9-text>
                 </div>
 
                 <div class="k9-travel-card-info-wrap">
-                    <h4>Return</h4>
-                    <k9-text [content]="'Airbill number: ' + row[columnIds.RETURNING_AIRWAY_BILL]"></k9-text>
-                    <k9-text [content]="'Departure date: ' + row[columnIds.DESIRED_RETURN_DATE]"></k9-text>
-                    <k9-text [content]="'Airline: ' + row[columnIds.AIRLINE]"></k9-text>
-                    <k9-text [content]="'Originating airport: ' + row[columnIds.DESTINATION_AIRPORT]"></k9-text>
-                    <k9-text [content]="'Destination airport: ' + row[columnIds.ORIGINATING_AIRPORT]"></k9-text>
+                    <k9-text
+                        [fontSize]="'1.2rem'"
+                        [content]="'RETURN'"
+                        [fontWeight]="'bold'"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Airbill number: ' + row[columnIds.RETURNING_AIRWAY_BILL]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Departure date: ' + row[columnIds.DESIRED_RETURN_DATE]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Airline: ' + row[columnIds.AIRLINE]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Originating airport: ' + row[columnIds.DESTINATION_AIRPORT]"
+                    ></k9-text>
+                    <k9-text
+                        [fontSize]="'0.8rem'"
+                        [content]="'Destination airport: ' + row[columnIds.ORIGINATING_AIRPORT]"
+                    ></k9-text>
                 </div>
             </div>
         </k9-card>

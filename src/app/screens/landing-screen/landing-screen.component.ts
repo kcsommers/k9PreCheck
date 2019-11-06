@@ -17,9 +17,9 @@ export class LandingScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.smartsheet.getK9PreCheckSheet().subscribe(sheet => {
-      const hmm = sheet.columns.map(c => `${c.title.toUpperCase().replace(' ', '_')} = ${c.id}`);
-    });
+    // setTimeout(() => {
+    //   this.doSearch('D1818177');
+    // }, 2000)
   }
 
   public doSearch(searchTerm: string) {
@@ -28,7 +28,6 @@ export class LandingScreenComponent implements OnInit {
     }
     // D1818177
     const row = this.smartsheet.getRow(searchTerm);
-    console.log('Row:::: ', row[this.columnIds.NOTES]);
     if (row) {
       this.data$.next(row);
     } else {

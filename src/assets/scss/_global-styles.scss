@@ -9,8 +9,16 @@ html, body {
     background: $offwhite;
 }
 
-a, p {
+a, p, h4 {
     text-decoration: none;
     color: inherit;
     font-family: $k9-fonts-primary;
+}
+
+.k9-card-header, .k9-dog-card {
+    h4 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: $gray;
+    }
 }

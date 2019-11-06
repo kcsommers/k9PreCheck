@@ -15,6 +15,9 @@ export class TextComponent implements OnInit {
   @Input()
   public color = '#242424';
 
+  @Input()
+  public fontWeight = 'normal';
+
   public paragraphs: string[];
 
   constructor() { }
