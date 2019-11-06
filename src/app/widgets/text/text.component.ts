@@ -23,7 +23,7 @@ export class TextComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.content) {
+    if (this.content && typeof this.content === 'string') {
       this.paragraphs = this.content.split('\n');
     }
   }

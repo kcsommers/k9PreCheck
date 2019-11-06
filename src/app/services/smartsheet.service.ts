@@ -5,17 +5,11 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ColumnIds } from '../core/public-api';
 
-const smartsheetToken = 's49ade7q7u504pa904twt2m9wx';
-
 @Injectable({
   providedIn: 'root'
 })
 export class SmartsheetService {
   private _k9Rows: any[] = [];
-  private _headers = new HttpHeaders({
-    'Authorization': `Bearer ${smartsheetToken}`,
-    'Content-Type': 'application/json'
-  });
 
   constructor(private http: HttpClient) {
     this.getK9PreCheckSheet().pipe(take(1)).subscribe(
@@ -41,26 +35,10 @@ export class SmartsheetService {
   }
 
   public getSheets(): Observable<any> {
-    return this.http.get('https://api.smartsheet.com/2.0/sheets', { headers: this._headers });
+    return this.http.get(`${environment.apiUrl}/sheets`);
   }
 
   public getK9PreCheckSheet(): Observable<any> {
-    return this.http.get('https://api.smartsheet.com/2.0/sheets/8529102538860420', { headers: this._headers });
+    return this.http.get(`${environment.apiUrl}/sheets/k9PreCheck`);
   }
-
-  public searchK9PreCheckSheet(): Observable<any> {
-    return this.http.get('https://api.smartsheet.com/2.0//search/sheets/8529102538860420?query=DN21988181', { headers: this._headers });
-  }
-
-  // public getSheets(): Observable<any> {
-  //   return this.http.get('/api/sheets', { headers: this._headers });
-  // }
-
-  // public getK9PreCheckSheet(): Observable<any> {
-  //   return this.http.get('/api/sheets/8529102538860420', { headers: this._headers });
-  // }
-
-  // public searchK9PreCheckSheet(): Observable<any> {
-  //   return this.http.get('/api/search/sheets/8529102538860420?query=DN21988181', { headers: this._headers });
-  // }
 }
