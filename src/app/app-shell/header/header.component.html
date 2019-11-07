@@ -26,7 +26,7 @@
             NOT FOUND. PLEASE TRY AGAIN.
         </p>
         <img
-            *ngIf="!(data$ | async)"
+            *ngIf="!(data$ | async) && !(fetching$ | async)"
             class="k9-dog"
             src="../../../assets/images/dog.png"
             alt="Dog"

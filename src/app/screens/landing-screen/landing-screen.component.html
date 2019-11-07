@@ -1,15 +1,20 @@
 <k9-header
     [searchError$]="searchError$"
     [data$]="data$"
+    [fetching$]="fetching$"
     (search)="doSearch($event)"
 ></k9-header>
-<k9-spinner></k9-spinner>
 <section class="k9-landing-body">
     <div
-        *ngIf="!(data$ | async) && !(fetching | async)"
+        *ngIf="!(data$ | async)"
         class="k9-landing-height-guard"
     ></div>
-    <div *ngIf="!(data | async) && fetching | async"></div>
+    <div
+        *ngIf="!(data | async) && fetching$ | async"
+        class="k9-landing-spinner-wrap"
+    >
+        <k9-spinner></k9-spinner>
+    </div>
     <div
         *ngIf="data$ | async as row"
         class="k9-landing-result-container"
@@ -34,9 +39,6 @@
                             ></k9-text>
                         </div>
 
-
-
-
                         <div class="k9-dog-card-img-wrap">
                             <img
                                 [src]="row[columnIds.NOTES]"
@@ -47,9 +49,6 @@
                                 [content]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"
                             ></k9-text>
                         </div>
-
-
-
 
                         <div class="k9-dog-card-img-wrap">
                             <img
@@ -63,13 +62,7 @@
                         </div>
                     </div>
 
-
-
-
                 </div>
-
-
-
 
                 <div class="k9-dog-card-owner-info">
                     <h4>Owner</h4>
@@ -109,19 +102,10 @@
                         </div>
                     </div>
 
-
-
-
                 </div>
-
-
-
 
             </div>
         </k9-card>
-
-
-
 
         <k9-card>
             <div
@@ -264,14 +248,8 @@
                     </div>
                 </div>
 
-
-
-
             </div>
         </k9-card>
-
-
-
 
         <k9-card>
             <div
@@ -348,9 +326,6 @@
                         [content]="'Destination airport: ' + row[columnIds.DESTINATION_AIRPORT]"
                     ></k9-text>
                 </div>
-
-
-
 
                 <div class="k9-travel-card-info-wrap">
                     <k9-text

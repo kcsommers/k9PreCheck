@@ -10,7 +10,7 @@ import { ColumnIds } from '../core/public-api';
 })
 export class SmartsheetService {
   private _k9Rows: any[] = [];
-  private fetching$ = new BehaviorSubject(false);
+  public fetching$ = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {
     this.fetching$.next(true);
@@ -19,9 +19,12 @@ export class SmartsheetService {
         if (sheet && sheet.rows) {
           this._k9Rows = sheet.rows;
         }
-        this.fetching$.next(false);
+        setTimeout(() => {
+          this.fetching$.next(false);
+        }, 5000)
+
       }),
-      (err) => {
+      (err: any) => {
         console.error(err);
         this.fetching$.next(false);
       };
@@ -42,13 +45,14 @@ export class SmartsheetService {
       return null;
     }
     if (!this.fetching$.value) {
-      return of(filtered);
+      return of(filtered());
     } else {
+      console.log('Elsing')
       return new Observable<any>((subscriber: Subscriber<any>) => {
         const fetchSubscr$ = this.fetching$.subscribe(
           (fetching: boolean) => {
             if (!fetching) {
-              subscriber.next(filtered)
+              subscriber.next(filtered())
               fetchSubscr$.unsubscribe();
             }
           }

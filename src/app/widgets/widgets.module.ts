@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TextComponent } from './text/text.component';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const widgets = [
   CardComponent,
@@ -17,7 +18,8 @@ const widgets = [
   declarations: widgets,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: widgets,
   providers: []

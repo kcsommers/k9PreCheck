@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
   @Input()
   public data$: BehaviorSubject<any>;
 
+  @Input()
+  public fetching$: BehaviorSubject<boolean>;
+
   @Output()
   public search = new EventEmitter<string>();
 

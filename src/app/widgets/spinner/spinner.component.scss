@@ -1,10 +1,11 @@
 @import '_variables';
 :host {
-    .k9-spinner-outer {
-        width: 50px;
-        height: 50px;
-        border-radius: 100%;
-        animation: spin 2000ms linear forwards infinite;
+    .k9-spinner-wrap {
+        display: inline-block;
+        animation: spin 1000ms linear forwards infinite;
+        fa-icon {
+            color: $gray;
+        }
     }
 }
 

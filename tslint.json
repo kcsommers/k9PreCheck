@@ -1,5 +1,4 @@
 {
-  "extends": "tslint:recommended",
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -88,5 +87,10 @@
   },
   "rulesDirectory": [
     "codelyzer"
-  ]
+  ],
+  "variable-name": {
+    "options": [
+      "allow-leading-underscore"
+    ]
+  }
 }
