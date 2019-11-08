@@ -19,9 +19,9 @@ export class LandingScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.doSearch('D1818177');
-    }, 2000)
+    // setTimeout(() => {
+    //   this.doSearch('D1818177');
+    // }, 2000)
   }
 
   public doSearch(searchTerm: string) {
