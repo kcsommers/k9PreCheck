@@ -5,4 +5,12 @@
     [(ngModel)]="searchTerm"
     (focus)="focused = true"
     (blur)="focused = false"
+    (ngModelChange)="searchTermChange($event)"
 >
+<span
+    class="k9-search-button"
+    [class.disabled]="!formValid"
+    (click)="buttonText === 'CLEAR' ? clear() : (formValid && doSearch())"
+>
+    {{buttonText}}
+</span>

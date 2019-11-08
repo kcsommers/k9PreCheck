@@ -5,7 +5,6 @@
         min-height: calc(100vh - 400px);
         padding: $k9-spacing-lg;
         position: relative;
-
     }
     .k9-landing-result-container {
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -93,6 +92,19 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+    @media only screen and (max-width: 680px) {
+        .k9-dog-card-img-wrap {
+          &.k9-dog-picture {
+              width: 100%;
+          }
+          &.k9-crate-picture {
+              width: 40%;
+          }
+          &.k9-water-picture {
+              width: 40%;
+          }
+        }
     }
 }
 

@@ -1,10 +1,46 @@
 @import '_variables';
 :host {
+    display: flex;
+    justify-content: center;
     .k9-searchbar {
         width: 500px;
         padding: $k9-spacing-md;
         display: block;
         border: 1px solid darken($offwhite, 5%);
+        text-overflow: ellipsis;
+    }
+    .k9-search-button {
+        background-color: $darkblue;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: $k9-spacing-md;
+        margin-left: $k9-spacing-sm;
+        color: $offwhite;
+        cursor: pointer;
+        &:hover:not(.disabled) {
+            opacity: 0.9;
+        }
+        &.disabled {
+            opacity: 0.7;
+            cursor: initial;
+        }
+    }
+    @media only screen and (max-width: 900px) {
+        .k9-searchbar {
+            width: 300px;
+        }
+    }
+    @media only screen and (max-width: 680px) {
+        .k9-searchbar {
+            width: 85%;
+        }
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    :host {
+        margin: $k9-spacing-md 0;
     }
 }
 

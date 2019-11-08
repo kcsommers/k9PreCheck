@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, HostListener, ElementRef, OnDestroy, Input } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
+import { fromEvent, Subscription, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'k9-searchbar',
@@ -10,6 +10,9 @@ export class SearchbarComponent implements OnInit, OnDestroy {
   @Input()
   public placeholder: string;
 
+  @Input()
+  public buttonText = 'FIND';
+
   @Output()
   public search = new EventEmitter<string>();
 
@@ -18,6 +21,8 @@ export class SearchbarComponent implements OnInit, OnDestroy {
   private _focused = false;
 
   private _listener: Subscription;
+
+  private _currentSearchTerm: string;
 
   public get focused(): boolean {
     return this._focused;
@@ -32,6 +37,10 @@ export class SearchbarComponent implements OnInit, OnDestroy {
     }
   }
 
+  public get formValid() {
+    return !!(this.searchTerm);
+  }
+
   constructor(private _el: ElementRef) { }
 
   ngOnInit() {
@@ -43,13 +52,30 @@ export class SearchbarComponent implements OnInit, OnDestroy {
     }
   }
 
+  public searchTermChange(value: string) {
+    if (this._currentSearchTerm) {
+      if (this._currentSearchTerm !== value) {
+        this.buttonText = 'FIND';
+      } else {
+        this.buttonText = 'CLEAR';
+      }
+    }
+  }
+
   public doSearch() {
+    this._currentSearchTerm = this.searchTerm;
     this.search.emit(this.searchTerm);
+  }
+
+  public clear() {
+    this._currentSearchTerm = '';
+    this.searchTerm = '';
+    this.buttonText = 'FIND';
   }
 
   public listen() {
     this._listener = fromEvent(this._el.nativeElement, 'keypress').subscribe((e: KeyboardEvent) => {
-      if (this.searchTerm && e.keyCode === 13) {
+      if (this.searchTerm && e.code === 'Enter') {
         this.doSearch();
       }
     });

@@ -10,10 +10,11 @@
     <div class="k9-search-wrap">
         <k9-searchbar
             [placeholder]="'START HERE! ENTER OUTBOUND OR RETURN BILL NUMBER'"
+            [buttonText]="searchButtonText$ | async"
             (search)="search.emit($event)"
         ></k9-searchbar>
         <p
-            *ngIf="!(searchError$ | async) && !(data$ | async)"
+            *ngIf="!(searchError$ | async)"
             class="k9-toc-link"
         >
             By using this service, you agree to be bound by

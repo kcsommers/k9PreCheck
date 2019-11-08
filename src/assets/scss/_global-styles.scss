@@ -7,9 +7,10 @@
 
 html, body {
     background: $offwhite;
+    overflow-x: hidden;
 }
 
-a, p, h4 {
+a, p, h4, span {
     text-decoration: none;
     color: inherit;
     font-family: $k9-fonts-primary;

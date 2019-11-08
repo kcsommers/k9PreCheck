@@ -18,6 +18,9 @@ export class TextComponent implements OnInit {
   @Input()
   public fontWeight = 'normal';
 
+  @Input()
+  public lineHeight = '1.25rem';
+
   public paragraphs: string[];
 
   constructor() { }

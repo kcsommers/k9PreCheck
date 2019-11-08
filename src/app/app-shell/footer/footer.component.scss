@@ -1,15 +1,29 @@
 @import '_variables';
 :host {
     .k9-footer {
+        flex-wrap: wrap;
         display: flex;
         padding: $k9-spacing-lg 4rem;
         background-color: white;
-        height: 250px;
     }
     .k9-footer-terms-wrap {
         flex: 1;
     }
     .k9-footer-copyright-wrap {
         flex: 0.5;
+        padding-right: $k9-spacing-lg;
+    }
+    @media only screen and (max-width: 680px) {
+        .k9-footer {
+            flex-direction: column;
+            padding: $k9-spacing-lg 2rem;
+        }
+        .k9-footer-terms-wrap {
+            order: 1;
+        }
+        .k9-footer-copyright-wrap {
+            order: 2;
+            margin-top: $k9-spacing-lg;
+        }
     }
 }
