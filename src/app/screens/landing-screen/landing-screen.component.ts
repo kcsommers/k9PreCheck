@@ -41,4 +41,10 @@ export class LandingScreenComponent implements OnInit {
       });
   }
 
+  public doClear(event: boolean) {
+    this.fetching$.next(false);
+    this.searchError$.next(false);
+    this.data$.next(null);
+  }
+
 }

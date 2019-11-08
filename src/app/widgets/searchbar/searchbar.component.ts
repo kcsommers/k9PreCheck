@@ -16,6 +16,9 @@ export class SearchbarComponent implements OnInit, OnDestroy {
   @Output()
   public search = new EventEmitter<string>();
 
+  @Output()
+  public clear = new EventEmitter<boolean>();
+
   public searchTerm = '';
 
   private _focused = false;
@@ -67,10 +70,12 @@ export class SearchbarComponent implements OnInit, OnDestroy {
     this.search.emit(this.searchTerm);
   }
 
-  public clear() {
+  public doClear() {
     this._currentSearchTerm = '';
     this.searchTerm = '';
     this.buttonText = 'FIND';
+    this.clear.emit(true);
+
   }
 
   public listen() {

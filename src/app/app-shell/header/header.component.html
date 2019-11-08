@@ -12,6 +12,7 @@
             [placeholder]="'START HERE! ENTER OUTBOUND OR RETURN BILL NUMBER'"
             [buttonText]="searchButtonText$ | async"
             (search)="search.emit($event)"
+            (clear)="clear.emit($event)"
         ></k9-searchbar>
         <p
             *ngIf="!(searchError$ | async)"

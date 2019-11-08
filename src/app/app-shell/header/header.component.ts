@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output()
   public search = new EventEmitter<string>();
 
+  @Output()
+  public clear = new EventEmitter<boolean>();
+
   public searchButtonText$ = new BehaviorSubject('FIND');
 
   private _destroy$ = new Subject();

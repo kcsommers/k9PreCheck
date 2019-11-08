@@ -10,7 +10,7 @@
 <span
     class="k9-search-button"
     [class.disabled]="!formValid"
-    (click)="buttonText === 'CLEAR' ? clear() : (formValid && doSearch())"
+    (click)="buttonText === 'CLEAR' ? doClear() : (formValid && doSearch())"
 >
     {{buttonText}}
 </span>
