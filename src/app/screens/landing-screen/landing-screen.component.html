@@ -10,7 +10,7 @@
         class="k9-landing-height-guard"
     ></div>
     <div
-        *ngIf="!(data | async) && fetching$ | async"
+        *ngIf="!(data$ | async) && fetching$ | async"
         class="k9-landing-spinner-wrap"
     >
         <k9-spinner></k9-spinner>
