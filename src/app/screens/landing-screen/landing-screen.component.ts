@@ -16,6 +16,9 @@ export class LandingScreenComponent implements OnInit {
   public fetching$ = new BehaviorSubject(false);
 
   constructor(private smartsheet: SmartsheetService) {
+    this.smartsheet.getK9PreCheckSheet().subscribe(r => {
+      console.log('Sheet:::: ', r)
+    })
   }
 
   ngOnInit() {
@@ -32,6 +35,7 @@ export class LandingScreenComponent implements OnInit {
     // D1818177
     this.smartsheet.getRow(searchTerm).pipe(take(1))
       .subscribe(row => {
+        console.log('ROWWW:::', row)
         if (row) {
           this.data$.next(row);
         } else {

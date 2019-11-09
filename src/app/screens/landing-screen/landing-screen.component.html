@@ -30,7 +30,7 @@
                     <div class="k9-dog-card-dog-info-wrap">
                         <div class="k9-dog-card-img-wrap k9-dog-picture">
                             <img
-                                [src]="row[columnIds.NOTES]"
+                                [src]="row[columnIds.PICTURE_OF_DOG]"
                                 alt="Picture of Dog"
                             >
                             <k9-text
@@ -42,8 +42,8 @@
 
                         <div class="k9-dog-card-img-wrap k9-crate-picture">
                             <img
-                                [src]="row[columnIds.NOTES]"
-                                alt="Picture of Dog"
+                                [src]="row[columnIds.PICTURE_OF_CRATE]"
+                                alt="Picture of Crate"
                             >
                             <k9-text
                                 [fontSize]="'0.8rem'"
@@ -53,8 +53,8 @@
 
                         <div class="k9-dog-card-img-wrap k9-water-picture">
                             <img
-                                [src]="row[columnIds.NOTES]"
-                                alt="Picture of Dog"
+                                [src]="row[columnIds.PICTURE_OF_WATER_RECEPTICALE]"
+                                alt="Picture of Water Receptacle"
                             >
                             <k9-text
                                 [fontSize]="'0.8rem'"
@@ -70,8 +70,8 @@
                     <div class="k9-dog-card-owner-info-wrap">
                         <div class="k9-dog-card-img-wrap">
                             <img
-                                [src]="row[columnIds.NOTES]"
-                                alt="row[columnIds.OWNER_NAME]"
+                                [src]="row[columnIds.OWNER_IMAGE_URL]"
+                                [alt]="row[columnIds.OWNER_NAME]"
                             >
                             <k9-text
                                 [fontSize]="'0.8rem'"
@@ -122,8 +122,8 @@
                 <div class="k9-cosignee-card-cosignee-info">
                     <div class="k9-cosignee-card-img-wrap">
                         <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
+                            [src]="row[columnIds.CONSIGNEE1_PICTURE]"
+                            [alt]="row[columnIds.CONSIGNEE_NAME1]"
                         >
                         <k9-text
                             [fontSize]="'0.8rem'"
@@ -155,8 +155,8 @@
                 >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
+                            [src]="row[columnIds.CONSIGNEE2_PICTURE]"
+                            [alt]="row[columnIds.CONSIGNE2_NAME]"
                         >
                         <k9-text
                             [fontSize]="'0.8rem'"
@@ -188,8 +188,8 @@
                 >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
-                            [src]="row[columnIds.NOTES]"
-                            alt="Picture of Dog"
+                            [src]="row[columnIds.CONSIGNEE3_PICTURE]"
+                            [alt]="row[columnIds.CONSIGNE3_NAME]"
                         >
                         <k9-text
                             [fontSize]="'0.8rem'"
@@ -221,8 +221,8 @@
                 >
                     <div class="k9-cosignee-card-img-wrap">
                         <img
-                            [src]="row[columnIds.NOTES]"
-                            [alt]="'Picture of Dog'"
+                            [src]="row[columnIds.CONSIGNEE4_PICTURE]"
+                            [alt]="row[columnIds.CONSIGNE4_NAME]"
                         >
                         <k9-text
                             [fontSize]="'0.8rem'"

@@ -32,12 +32,15 @@ export class SmartsheetService {
 
   public getRow(id: string): Observable<any> {
     const filtered = () => {
+      // tslint:disable-next-line: max-line-length
+      const imgs = ['img-src-dog', 'img-src-owner', 'img-src-crate', 'img-src-water', 'img-src-con1', 'img-src-con2', 'img-src-con3', 'img-src-con4'];
       const row = this._k9Rows.find(r => r.cells.some(c => (
         (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURNING_AIRWAY_BILL) && c.value === id))
       );
       if (row && row.cells && row.cells.length) {
         const newRow = {};
         row.cells.forEach(cell => {
+          console.log('CELLL:::: ', cell);
           newRow[cell.columnId] = cell.value;
         });
         return newRow;
@@ -47,7 +50,6 @@ export class SmartsheetService {
     if (!this.fetching$.value) {
       return of(filtered());
     } else {
-      console.log('Elsing')
       return new Observable<any>((subscriber: Subscriber<any>) => {
         const fetchSubscr$ = this.fetching$.subscribe(
           (fetching: boolean) => {
@@ -69,3 +71,60 @@ export class SmartsheetService {
     return this.http.get(`${environment.apiUrl}/sheets/k9PreCheck`);
   }
 }
+
+
+//   private getImages(ids: string[]): Observable<any> {
+//     return this.http.post(`${environment.apiUrl}/cells/image`, ids);
+//   }
+
+//   public getRow(id: string): Observable<any> {
+//     const filtered = (): Observable<any> => {
+//       const row = this._k9Rows.find(r => r.cells.some(c => (
+//         (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURNING_AIRWAY_BILL) && c.value === id))
+//       );
+//       const imgIds = [];
+//       if (row && row.cells && row.cells.length) {
+//         const newRow = {};
+//         row.cells.forEach(cell => {
+//           newRow[cell.columnId] = cell.value;
+//           if (cell.image) {
+//             imgIds.push([cell.columnId, cell.image]);
+//           }
+//         });
+//         if (imgIds.length) {
+//           return new Observable(subscriber => {
+//             this.getImages(imgIds).pipe(take(1))
+//               .subscribe((urls: [string, string][]) => {
+//                 urls.forEach(url => {
+//                   newRow[url[0]] = url[1];
+//                 });
+//                 subscriber.next(newRow);
+//               });
+//           });
+//         } else {
+//           return of(newRow);
+//         }
+//       }
+//       return of(null);
+//     }
+//     if (!this.fetching$.value) {
+//       return filtered();
+//     } else {
+//       console.log('Elsing')
+//       return this.fetching$.pipe(
+//         take(1),
+//         switchMap(fetching => fetching ? filtered() : of(null))
+//       );
+//       // return new Observable<any>((subscriber: Subscriber<any>) => {
+//       //   const fetchSubscr$ = this.fetching$.subscribe(
+//       //     (fetching: boolean) => {
+//       //       if (!fetching) {
+//       //         subscriber.next(filtered())
+//       //         fetchSubscr$.unsubscribe();
+//       //       }
+//       //     }
+//       //   )
+//       // })
+//     }
+//   }
+

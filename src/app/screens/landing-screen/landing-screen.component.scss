@@ -1,5 +1,12 @@
 @import '_variables';
 :host {
+    .k9-img {
+        width: 175px;
+        height: 200px;
+        background: red;
+        background-size: cover;
+        background-position: center;
+    }
     .k9-landing-body {
         background-color: $offwhite;
         min-height: calc(100vh - 400px);
