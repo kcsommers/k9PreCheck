@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'k9-text',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent implements OnInit {
+export class TextComponent implements OnInit, OnChanges {
   @Input()
   public content: string;
 
@@ -26,6 +26,14 @@ export class TextComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.formatContent();
+  }
+
+  ngOnChanges() {
+    this.formatContent();
+  }
+
+  private formatContent() {
     if (this.content && typeof this.content === 'string') {
       this.paragraphs = this.content.split('\n');
     }

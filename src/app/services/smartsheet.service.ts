@@ -40,7 +40,6 @@ export class SmartsheetService {
       if (row && row.cells && row.cells.length) {
         const newRow = {};
         row.cells.forEach(cell => {
-          console.log('CELLL:::: ', cell);
           newRow[cell.columnId] = cell.value;
         });
         return newRow;

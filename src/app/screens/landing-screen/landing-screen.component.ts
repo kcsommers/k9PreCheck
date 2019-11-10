@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { SmartsheetService } from 'src/app/services/smartsheet.service';
 import { BehaviorSubject } from 'rxjs';
 import { ColumnIds } from '../../core/column-ids.enum';
 import { take } from 'rxjs/operators';
+import { TextComponent } from 'src/app/widgets/text/text.component';
 
 @Component({
   selector: 'k9-landing-screen',
@@ -15,7 +16,10 @@ export class LandingScreenComponent implements OnInit {
   public columnIds = ColumnIds;
   public fetching$ = new BehaviorSubject(false);
 
-  constructor(private smartsheet: SmartsheetService) {
+  @ViewChild('Owner', { static: false })
+  private owner: TextComponent;
+
+  constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef) {
     this.smartsheet.getK9PreCheckSheet().subscribe(r => {
       console.log('Sheet:::: ', r)
     })
@@ -33,9 +37,9 @@ export class LandingScreenComponent implements OnInit {
       this.searchError$.next(false);
     }
     // D1818177
+    // AA199181
     this.smartsheet.getRow(searchTerm).pipe(take(1))
       .subscribe(row => {
-        console.log('ROWWW:::', row)
         if (row) {
           this.data$.next(row);
         } else {

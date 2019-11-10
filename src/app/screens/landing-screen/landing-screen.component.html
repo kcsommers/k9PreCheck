@@ -20,6 +20,7 @@
         *ngIf="data$ | async as row"
         class="k9-landing-result-container"
     >
+        {{row[columnIds.OWNER_NAME]}}
         <k9-card>
             <div
                 class="k9-dog-card"
@@ -74,9 +75,10 @@
                                 [alt]="row[columnIds.OWNER_NAME]"
                             >
                             <k9-text
+                                #Owner
                                 [fontSize]="'0.8rem'"
                                 [fontWeight]="'bold'"
-                                [content]="row[columnIds.OWNER_NAME]"
+                                [content]="(data$ | async)[columnIds.OWNER_NAME]"
                             ></k9-text>
                         </div>
                         <div class="k9-card-contact-wrap">
