@@ -20,9 +20,9 @@ export class LandingScreenComponent implements OnInit {
   private owner: TextComponent;
 
   constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef) {
-    this.smartsheet.getK9PreCheckSheet().subscribe(r => {
-      console.log('Sheet:::: ', r)
-    })
+    // this.smartsheet.getK9PreCheckSheet().subscribe(r => {
+    //   console.log('Sheet:::: ', r)
+    // })
   }
 
   ngOnInit() {
