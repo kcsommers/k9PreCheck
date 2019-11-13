@@ -1,12 +1,5 @@
 @import '_variables';
 :host {
-    .k9-img {
-        width: 175px;
-        height: 200px;
-        background: red;
-        background-size: cover;
-        background-position: center;
-    }
     .k9-landing-body {
         background-color: $offwhite;
         min-height: calc(100vh - 400px);
@@ -57,7 +50,7 @@
     }
     .k9-dog-card-img-wrap,
     .k9-cosignee-card-img-wrap {
-        width: px;
+        width: 175px;
         display: flex;
         flex-direction: column;
         align-items: center;
