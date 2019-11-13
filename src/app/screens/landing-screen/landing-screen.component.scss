@@ -1,7 +1,7 @@
 @import '_variables';
 :host {
     .k9-img {
-        width: 175px;
+        width: 300px;
         height: 200px;
         background: red;
         background-size: cover;
@@ -57,7 +57,7 @@
     }
     .k9-dog-card-img-wrap,
     .k9-cosignee-card-img-wrap {
-        width: 175px;
+        width: px;
         display: flex;
         flex-direction: column;
         align-items: center;
