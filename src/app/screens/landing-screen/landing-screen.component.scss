@@ -42,40 +42,26 @@
     .k9-dog-card {
         justify-content: space-between;
     }
-    .k9-dog-card-dog-info-wrap,
-    .k9-dog-card-owner-info-wrap {
-        margin-top: $k9-spacing-md;
+    .k9-dog-card-title {
+        margin-bottom: $k9-spacing-md;
+    }
+    .k9-dog-card-dog-section-wrap,
+    .k9-dog-card-owner-section-wrap {
         display: flex;
         flex-wrap: wrap;
-    }
-    .k9-dog-card-img-wrap,
-    .k9-cosignee-card-img-wrap {
-        width: 175px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: $k9-spacing-md;
-        img {
-            display: block;
-            width: 100%;
-        }
-        k9-text {
+        .k9-card-item {
             margin: $k9-spacing-md 0;
+            &:not(:last-child) {
+                margin-right: $k9-spacing-lg;
+            }
         }
     }
-    .k9-card-contact-wrap {
-        padding: 0 $k9-spacing-md;
-        k9-text {
-            display: block;
-            margin-bottom: $k9-spacing-sm;
-        }
-    }
-    .k9-cosignee-card-cosignee-info {
-        display: flex;
-    }
-    .k9-dog-card-dog-info-wrap {
-        .k9-dog-card-img-wrap {
-            margin-right: $k9-spacing-lg;
+    .k9-cosignee-card {
+        .k9-card-item:not(:last-child) {
+            margin-bottom: $k9-spacing-lg;
+            &:not(:last-child) {
+                margin-right: $k9-spacing-lg;
+            }
         }
     }
     .k9-travel-card-info-wrap {
@@ -93,17 +79,18 @@
         align-items: center;
         justify-content: space-between;
     }
-    @media only screen and (max-width: 680px) {
-        .k9-dog-card-img-wrap {
-          &.k9-dog-picture {
-              width: 100%;
-          }
-          &.k9-crate-picture {
-              width: 40%;
-          }
-          &.k9-water-picture {
-              width: 40%;
-          }
+    @media only screen and (max-width: 768px) {
+        .k9-dog-card-dog-section-wrap {
+            .k9-card-item {
+                margin-right: 0 !important;
+            }
+            .k9-crate-picture,
+            .k9-water-picture {
+                width: 40%;
+            }
+            .k9-water-picture {
+                margin-left: auto;
+            }
         }
     }
 }

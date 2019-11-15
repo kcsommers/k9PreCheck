@@ -1,0 +1,28 @@
+<div class="k9-card-image-container">
+    <div class="k9-card-img-wrap">
+        <div class="k9-card-img">
+            <img
+                [src]="src"
+                [alt]="alt"
+            >
+        </div>
+
+        <k9-text
+            *ngIf="!!(label)"
+            [fontSize]="'0.8rem'"
+            [fontWeight]="'bold'"
+            [content]="label"
+        ></k9-text>
+    </div>
+
+    <div
+        *ngIf="details && details.length"
+        class="k9-card-img-details-wrap"
+    >
+        <k9-text
+            *ngFor="let detail of details"
+            [fontSize]="'0.8rem'"
+            [content]="detail"
+        ></k9-text>
+    </div>
+</div>

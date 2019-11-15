@@ -33,7 +33,7 @@
         position: relative;
     }
     img.k9-dog {
-        display: inline-block; 
+        display: inline-block;
         width: 295px;
         position: absolute;
         top: 125px;
@@ -41,7 +41,7 @@
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
         z-index: 10000;
     }
-    p.k9-toc-link {
+    p.k9-tos-link {
         position: absolute;
         width: 100%;
         left: 50%;
@@ -63,7 +63,7 @@
             height: auto;
             padding: $k9-spacing-md;
         }
-        p.k9-toc-link {
+        p.k9-tos-link {
             position: initial;
             transform: translateX(0%);
             margin: 0 auto;

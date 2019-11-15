@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { toc } from '../../core/toc';
+import { tos } from '../../core/tos';
 
 @Component({
   selector: 'k9-footer',
@@ -7,7 +7,7 @@ import { toc } from '../../core/toc';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  public terms = toc;
+  public terms = tos;
 
   constructor() { }
 

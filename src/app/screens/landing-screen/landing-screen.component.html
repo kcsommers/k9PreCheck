@@ -25,90 +25,47 @@
                 class="k9-dog-card"
                 card-body
             >
-                <div class="k9-dog-card-dog-info">
-                    <h4>Dog</h4>
-                    <div class="k9-dog-card-dog-info-wrap">
-                        <div class="k9-dog-card-img-wrap k9-dog-picture">
-                            <img
+                <div class="k9-dog-card-dog-section">
+                    <h4 class="k9-dog-card-title">Dog</h4>
+                    <div class="k9-dog-card-dog-section-wrap">
+                        <div class="k9-card-item k9-dog-picture">
+                            <k9-card-image
                                 [src]="row[columnIds.PICTURE_OF_DOG]"
-                                alt="Picture of Dog"
-                            >
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [fontWeight]="'bold'"
-                                [content]="row[columnIds.CALL_NAME] + ', ' + row[columnIds.BREED]"
-                            ></k9-text>
+                                [alt]="'Picture of Dog'"
+                                [label]="row[columnIds.CALL_NAME] + ', ' + row[columnIds.BREED]"
+                            ></k9-card-image>
                         </div>
-
-                        <div class="k9-dog-card-img-wrap k9-crate-picture">
-                            <img
+                        <div class="k9-card-item k9-crate-picture">
+                            <k9-card-image
                                 [src]="row[columnIds.PICTURE_OF_CRATE]"
-                                alt="Picture of Crate"
-                            >
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"
-                            ></k9-text>
+                                [alt]="'Picture of Crate'"
+                                [label]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"
+                            ></k9-card-image>
                         </div>
-
-                        <div class="k9-dog-card-img-wrap k9-water-picture">
-                            <img
+                        <div class="k9-card-item k9-water-picture">
+                            <k9-card-image
                                 [src]="row[columnIds.PICTURE_OF_WATER_RECEPTICALE]"
-                                alt="Picture of Water Receptacle"
-                            >
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="'Food/Water Receptacle'"
-                            ></k9-text>
+                                [alt]="'Picture of Water Receptacle'"
+                                [label]="'Food/Water Receptacle'"
+                            ></k9-card-image>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="k9-dog-card-owner-info">
-                    <h4>Owner</h4>
-                    <div class="k9-dog-card-owner-info-wrap">
-                        <div class="k9-dog-card-img-wrap">
-                            <img
-                                [src]="row[columnIds.OWNER_IMAGE_URL]"
+                <div class="k9-dog-card-owner-section">
+                    <h4 class="k9-dog-card-title">Owner</h4>
+                    <div class="k9-dog-card-dog-section-wrap">
+                        <div class="k9-card-item">
+                            <k9-card-image
+                                [src]="row[columnIds.OWNER_PICTURE]"
                                 [alt]="row[columnIds.OWNER_NAME]"
-                            >
-                            <k9-text
-                                #Owner
-                                [fontSize]="'0.8rem'"
-                                [fontWeight]="'bold'"
-                                [content]="(data$ | async)[columnIds.OWNER_NAME]"
-                            ></k9-text>
-                        </div>
-                        <div class="k9-card-contact-wrap">
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="row[columnIds.ADDRESS]"
-                            ></k9-text>
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="row[columnIds.CITY] + ', ' + row[columnIds.STATE]"
-                            ></k9-text>
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="row[columnIds.PHONE]"
-                            ></k9-text>
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="row[columnIds.EMAIL]"
-                            ></k9-text>
-                            <k9-text
-                                [fontSize]="'0.8rem'"
-                                [content]="'Govt ID: ' + (row[columnIds.GOV_ID] ? 'Yes' : 'No')"
-                            ></k9-text>
+                                [label]="row[columnIds.OWNER_NAME]"
+                                [details]="[row[columnIds.OWNER_ADDRESS], row[columnIds.OWNER_CITY] + ', ' + row[columnIds.OWNER_STATE] + ' ' + row[columnIds.OWNER_ZIP_CODE], row[columnIds.OWNER_PHONE], row[columnIds.OWNER_EMAIL], 'Govt ID: ' + (row[columnIds.GOV_ID] ? 'Yes' : 'No')]"
+                            ></k9-card-image>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </k9-card>
-
         <k9-card>
             <div
                 card-header
@@ -120,139 +77,52 @@
                 card-body
                 class="k9-cosignee-card"
             >
-                <div class="k9-cosignee-card-cosignee-info">
-                    <div class="k9-cosignee-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.CONSIGNEE1_PICTURE]"
-                            [alt]="row[columnIds.CONSIGNEE_NAME1]"
-                        >
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE_NAME1]"
-                        ></k9-text>
-                    </div>
-                    <div class="k9-card-contact-wrap">
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE1_ADDRESS] + ', '"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE1_ZIP_CODE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE1_PHONE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE1_EMAIL]"
-                        ></k9-text>
-                    </div>
+                <div
+                    *ngIf="row[columnIds.CONSIGNEE1_NAME]"
+                    class="k9-card-item"
+                >
+                    <k9-card-image
+                        [src]="row[columnIds.CONSIGNEE1_PICTURE]"
+                        [alt]="row[columnIds.CONSIGNEE1_NAME]"
+                        [label]="row[columnIds.CONSIGNEE1_NAME]"
+                        [details]="[row[columnIds.CONSIGNEE1_ADDRESS], row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE1_ZIP_CODE], row[columnIds.CONSIGNEE1_PHONE], row[columnIds.CONSIGNEE1_EMAIL]]"
+                    ></k9-card-image>
                 </div>
                 <div
                     *ngIf="row[columnIds.CONSIGNEE2_NAME]"
-                    class="k9-cosignee-card-cosignee-info"
+                    class="k9-card-item"
                 >
-                    <div class="k9-cosignee-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.CONSIGNEE2_PICTURE]"
-                            [alt]="row[columnIds.CONSIGNEE2_NAME]"
-                        >
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE2_NAME]"
-                        ></k9-text>
-                    </div>
-                    <div class="k9-card-contact-wrap">
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE2_ADDRESS] + ', '"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE2_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE2_ZIP_CODE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE2_PHONE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE2_EMAIL]"
-                        ></k9-text>
-                    </div>
+                    <k9-card-image
+                        [src]="row[columnIds.CONSIGNEE2_PICTURE]"
+                        [alt]="row[columnIds.CONSIGNEE2_NAME]"
+                        [label]="row[columnIds.CONSIGNEE2_NAME]"
+                        [details]="[row[columnIds.CONSIGNEE2_ADDRESS], row[columnIds.CONSIGNEE2_CITY] + ', ' + row[columnIds.CONSIGNEE1_STATE] + ' ' + row[columnIds.CONSIGNEE2_ZIP_CODE], row[columnIds.CONSIGNEE2_PHONE], row[columnIds.CONSIGNEE2_EMAIL]]"
+                    ></k9-card-image>
                 </div>
                 <div
                     *ngIf="row[columnIds.CONSIGNEE3_NAME]"
-                    class="k9-cosignee-card-cosignee-info"
+                    class="k9-card-item"
                 >
-                    <div class="k9-cosignee-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.CONSIGNEE3_PICTURE]"
-                            [alt]="row[columnIds.CONSIGNEE3_NAME]"
-                        >
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE3_NAME]"
-                        ></k9-text>
-                    </div>
-                    <div class="k9-card-contact-wrap">
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE3_ADDRESS] + ', '"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE1_CITY] + ', ' + row[columnIds.CONSIGNEE3_STATE] + ' ' + row[columnIds.CONSIGNEE3_ZIP_CODE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE3_PHONE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE3_EMAIL]"
-                        ></k9-text>
-                    </div>
+                    <k9-card-image
+                        [src]="row[columnIds.CONSIGNEE3_PICTURE]"
+                        [alt]="row[columnIds.CONSIGNEE3_NAME]"
+                        [label]="row[columnIds.CONSIGNEE3_NAME]"
+                        [details]="[row[columnIds.CONSIGNEE3_ADDRESS], row[columnIds.CONSIGNEE3_CITY] + ', ' + row[columnIds.CONSIGNEE3_STATE] + ' ' + row[columnIds.CONSIGNEE3_ZIP_CODE], row[columnIds.CONSIGNEE3_PHONE], row[columnIds.CONSIGNEE3_EMAIL]]"
+                    ></k9-card-image>
                 </div>
                 <div
                     *ngIf="row[columnIds.CONSIGNEE4_NAME]"
-                    class="k9-cosignee-card-cosignee-info"
+                    class="k9-card-item"
                 >
-                    <div class="k9-cosignee-card-img-wrap">
-                        <img
-                            [src]="row[columnIds.CONSIGNEE4_PICTURE]"
-                            [alt]="row[columnIds.CONSIGNEE4_NAME]"
-                        >
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE4_NAME]"
-                        ></k9-text>
-                    </div>
-                    <div class="k9-card-contact-wrap">
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE4_ADDRESS] + ','"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE4_CITY] + ', ' + row[columnIds.CONSIGNEE4_STATE] + ' ' + row[columnIds.CONSIGNEE4_ZIP_CODE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE4_PHONE]"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="row[columnIds.CONSIGNEE4_EMAIL]"
-                        ></k9-text>
-                    </div>
+                    <k9-card-image
+                        [src]="row[columnIds.CONSIGNEE4_PICTURE]"
+                        [alt]="row[columnIds.CONSIGNEE4_NAME]"
+                        [label]="row[columnIds.CONSIGNEE4_NAME]"
+                        [details]="[row[columnIds.CONSIGNEE4_ADDRESS], row[columnIds.CONSIGNEE4_CITY] + ', ' + row[columnIds.CONSIGNEE4_STATE] + ' ' + row[columnIds.CONSIGNEE4_ZIP_CODE], row[columnIds.CONSIGNEE4_PHONE], row[columnIds.CONSIGNEE4_EMAIL]]"
+                    ></k9-card-image>
                 </div>
-
             </div>
         </k9-card>
-
         <k9-card>
             <div
                 card-header
@@ -328,7 +198,6 @@
                         [content]="'Destination airport: ' + row[columnIds.DESTINATION_AIRPORT]"
                     ></k9-text>
                 </div>
-
                 <div class="k9-travel-card-info-wrap">
                     <k9-text
                         [fontSize]="'1.2rem'"
