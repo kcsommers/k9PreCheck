@@ -7,13 +7,15 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardImageComponent } from './card-image/card-image.component';
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 const widgets = [
   CardComponent,
   SearchbarComponent,
   TextComponent,
   SpinnerComponent,
-  CardImageComponent
+  CardImageComponent,
+  CardDetailsComponent
 ];
 
 @NgModule({

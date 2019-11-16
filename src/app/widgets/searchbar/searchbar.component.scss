@@ -31,14 +31,14 @@
             width: 300px;
         }
     }
-    @media only screen and (max-width: 680px) {
+    @media only screen and (max-width: 815px) {
         .k9-searchbar {
             width: 85%;
         }
     }
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 815px) {
     :host {
         margin: $k9-spacing-md 0;
     }

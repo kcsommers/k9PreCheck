@@ -1,18 +1,13 @@
 @import '_variables';
 :host {
-    .k9-card-image-container {
-        display: flex;
-    }
     .k9-card-img-wrap {
         text-align: center;
-        flex: 1;
-    }
-    .k9-card-img-details-wrap {
-        padding: 0 $k9-spacing-md;
-        flex: 0.75;
+        width: 100%;
     }
     .k9-card-img {
         margin-bottom: $k9-spacing-md;
+        margin-left: auto;
+        margin-right: auto;
         img {
             display: block;
             width: 100%;

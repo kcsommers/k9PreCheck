@@ -18,6 +18,9 @@ export class CardImageComponent implements OnInit {
   @Input()
   public details: string[];
 
+  @Input()
+  public imageWidth = '100%';
+
   constructor() { }
 
   ngOnInit() {

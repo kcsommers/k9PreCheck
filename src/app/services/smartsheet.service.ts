@@ -35,7 +35,7 @@ export class SmartsheetService {
       // tslint:disable-next-line: max-line-length
       const imgs = ['img-src-dog', 'img-src-owner', 'img-src-crate', 'img-src-water', 'img-src-con1', 'img-src-con2', 'img-src-con3', 'img-src-con4'];
       const row = this._k9Rows.find(r => r.cells.some(c => (
-        (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURNING_AIRWAY_BILL) && c.value === id))
+        (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURN_AIRWAY_BILL) && c.value === id))
       );
       if (row && row.cells && row.cells.length) {
         const newRow = {};

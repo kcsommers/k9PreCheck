@@ -1,6 +1,7 @@
 <p
     *ngFor="let p of paragraphs"
-    [ngStyle]="{ fontSize: fontSize, color: color, fontWeight: fontWeight, lineHeight: lineHeight }"
+    [ngStyle]="getStyles()"
+    [title]="title"
 >
     {{p}}
 </p>

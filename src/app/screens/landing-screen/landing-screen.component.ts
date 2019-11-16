@@ -14,11 +14,29 @@ export class LandingScreenComponent implements OnInit {
   public data$ = new BehaviorSubject(null);
   public columnIds = ColumnIds;
   public fetching$ = new BehaviorSubject(false);
+  public windowSize = 'windowMd';
+  public imageSizes = {
+    dogCard: {
+      windowMd: '100%',
+      windowLg: '125px',
+      windowXl: '150px',
+    },
+    consignee: {
+      windowSm: '40%',
+      windowMd: '200px',
+      windowLg: '200px',
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  handleResize(e: Event) {
+    this.updateWindowSize(e.target['innerWidth']);
+  }
 
   constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef) {
-    // this.smartsheet.getK9PreCheckSheet().subscribe(r => {
-    //   console.log('Sheet:::: ', r)
-    // })
+    this.smartsheet.getK9PreCheckSheet().subscribe(r => {
+      console.log('Sheet:::: ', r)
+    })
   }
 
   ngOnInit() {
@@ -27,6 +45,19 @@ export class LandingScreenComponent implements OnInit {
       // AK009864
       this.doSearch('AK009864');
     }, 2000)
+    this.updateWindowSize(window.innerWidth);
+  }
+
+  private updateWindowSize(width: number) {
+    if (width < 1080) {
+      this.windowSize = 'windowMd';
+    }
+    if (width >= 1080 && width < 1200) {
+      this.windowSize = 'windowLg';
+    }
+    if (width >= 1200) {
+      this.windowSize = 'windowXl';
+    }
   }
 
   public doSearch(searchTerm: string) {

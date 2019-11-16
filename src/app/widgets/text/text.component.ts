@@ -21,6 +21,12 @@ export class TextComponent implements OnInit, OnChanges {
   @Input()
   public lineHeight = '1.25rem';
 
+  @Input()
+  public useEllipsis = false;
+
+  @Input()
+  public title: string;
+
   public paragraphs: string[];
 
   constructor() { }
@@ -37,6 +43,20 @@ export class TextComponent implements OnInit, OnChanges {
     if (this.content && typeof this.content === 'string') {
       this.paragraphs = this.content.split('\n');
     }
+  }
+
+  public getStyles() {
+    const styles = {
+      fontSize: this.fontSize,
+      color: this.color,
+      fontWeight: this.fontWeight,
+      lineHeight: this.lineHeight
+    };
+    const overflowStyles = {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    };
+    return !this.useEllipsis ? styles : Object.assign(styles, overflowStyles);
   }
 
 }
