@@ -15,16 +15,27 @@ export class LandingScreenComponent implements OnInit {
   public columnIds = ColumnIds;
   public fetching$ = new BehaviorSubject(false);
   public windowSize = 'windowMd';
-  public imageSizes = {
+  public imageWidths = {
     dogCard: {
+      windowXs: '100%',
+      windowSm: '100%',
       windowMd: '100%',
-      windowLg: '125px',
+      windowLg: '150px',
+      windowXl: '150px',
+    },
+    owner: {
+      windowXs: '150px',
+      windowSm: '100%',
+      windowMd: '100%',
+      windowLg: '150px',
       windowXl: '150px',
     },
     consignee: {
-      windowSm: '40%',
-      windowMd: '200px',
-      windowLg: '200px',
+      windowXs: '150px',
+      windowSm: '150px',
+      windowMd: '100px',
+      windowLg: '100px',
+      windowXl: '100px',
     }
   }
 
@@ -34,25 +45,31 @@ export class LandingScreenComponent implements OnInit {
   }
 
   constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef) {
-    this.smartsheet.getK9PreCheckSheet().subscribe(r => {
-      console.log('Sheet:::: ', r)
-    })
+    // this.smartsheet.getK9PreCheckSheet().subscribe(r => {
+    //   console.log('Sheet:::: ', r)
+    // })
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      // D1818177
-      // AK009864
-      this.doSearch('AK009864');
-    }, 2000)
+    // setTimeout(() => {
+    //   // D1818177
+    //   // AK009864
+    //   this.doSearch('AK009864');
+    // }, 2000)
     this.updateWindowSize(window.innerWidth);
   }
 
   private updateWindowSize(width: number) {
-    if (width < 1080) {
+    if (width < 500) {
+      this.windowSize = 'windowXs';
+    }
+    if (width >= 500 && width < 815) {
+      this.windowSize = 'windowSm';
+    }
+    if (width >= 815 && width < 1080) {
       this.windowSize = 'windowMd';
     }
-    if (width >= 1080 && width < 1200) {
+    if (width >= 1100 && width < 1200) {
       this.windowSize = 'windowLg';
     }
     if (width >= 1200) {

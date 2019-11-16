@@ -26,19 +26,19 @@
             cursor: initial;
         }
     }
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1075px) {
         .k9-searchbar {
             width: 300px;
         }
     }
-    @media only screen and (max-width: 815px) {
+    @media only screen and (max-width: 870px) {
         .k9-searchbar {
             width: 85%;
         }
     }
 }
 
-@media only screen and (max-width: 815px) {
+@media only screen and (max-width: 870px) {
     :host {
         margin: $k9-spacing-md 0;
     }

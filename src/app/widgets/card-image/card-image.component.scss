@@ -13,4 +13,13 @@
             width: 100%;
         }
     }
+    @media only screen and (max-width: 815px) {
+        .k9-card-img {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .k9-card-img-wrap {
+            text-align: left;
+        }
+    }
 }
