@@ -236,11 +236,15 @@
                     <div class="travel-card-info-body">
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Airbill number: ' + (row[columnIds.OUTBOUND_AIRWAY_BILL] || '--')"
+                            [content]="'Airway Bill #: ' + (row[columnIds.OUTBOUND_AIRWAY_BILL] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure date: ' + (row[columnIds.DESIRED_DEPARTURE_DATE] || '--')"
+                            [content]="'Departure Date: ' + (row[columnIds.DESIRED_DEPARTURE_DATE] || '--')"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Originating Airport: ' + (row[columnIds.OUTBOUND_ORIGINATING_AIRPORT] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
@@ -248,38 +252,42 @@
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Originating airport: ' + (row[columnIds.OUTBOUND_ORIGINATING_AIRPORT] || '--')"
+                            [content]="'Flight #: ' + (row[columnIds.OUTBOUND_FLIGHT_NUMBER] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Destination airport: ' + (row[columnIds.OUTBOUND_DESTINATION_AIRPORT] || '--')"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="'Connecting Flight: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRPORT] ? 'Yes' : 'No')"
+                            [content]="'Departure Time: ' + (row[columnIds.OUTBOUND_DEPARTURE_TIME] || '--')"
                         ></k9-text>
                         <ng-container *ngIf="row[columnIds.OUTBOUND_CONNECTING_AIRPORT]">
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting airport: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRPORT] || '--')"
+                                [content]="'Connecting Airport: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRPORT] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting airline: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRLINE] || '--')"
+                                [content]="'Arrival Time: ' + (row[columnIds.OUTBOUND_CONNECTING_ARRIVAL_TIME] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting flight number: ' + (row[columnIds.OUTBOUND_CONNECTING_FLIGHT_NUMBER] || '--')"
+                                [content]="'Connecting Airline: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRLINE] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting arrival time: ' + (row[columnIds.OUTBOUND_CONNECTING_ARRIVAL_TIME] || '--')"
+                                [content]="'Connecting Flight #: ' + (row[columnIds.OUTBOUND_CONNECTING_FLIGHT_NUMBER] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting departure time: ' + (row[columnIds.OUTBOUND_CONNECTING_DEPARTURE_TIME] || '--')"
+                                [content]="'Connecting Departure Time: ' + (row[columnIds.OUTBOUND_CONNECTING_DEPARTURE_TIME] || '--')"
                             ></k9-text>
                         </ng-container>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Destination Airport: ' + (row[columnIds.OUTBOUND_DESTINATION_AIRPORT] || '--')"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Arrival Time: ' + (row[columnIds.OUTBOUND_DESTINATION_ARRIVAL_TIME ] || '--')"
+                        ></k9-text>
                     </div>
                 </div>
                 <div class="k9-travel-card-info-wrap travel-card-flight-info">
@@ -293,11 +301,15 @@
                     <div class="travel-card-info-body">
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Air Waybill number: ' + (row[columnIds.RETURN_AIRWAY_BILL] || '--')"
+                            [content]="'Airway Bill #: ' + (row[columnIds.RETURN_AIRWAY_BILL] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure date: ' + (row[columnIds.RETURN_DATE] || '--')"
+                            [content]="'Departure Date: ' + (row[columnIds.RETURN_DATE] || '--')"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Originating Airport: ' + (row[columnIds.RETURN_ORIGINATING_AIRPORT] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
@@ -305,38 +317,42 @@
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Originating airport: ' + (row[columnIds.RETURN_DESTINATION_AIRPORT] || '--')"
+                            [content]="'Flight #: ' + (row[columnIds.RETURN_FLIGHT_NUMBER] || '--')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Destination airport: ' + (row[columnIds.RETURN_ORIGINATING_AIRPORT] || '--')"
-                        ></k9-text>
-                        <k9-text
-                            [fontSize]="'0.8rem'"
-                            [content]="'Connecting Flight: ' + (row[columnIds.RETURN_CONNECTING_AIRPORT] ? 'Yes' : 'No')"
+                            [content]="'Departure Time: ' + (row[columnIds.RETURN_DEPARTURE_TIME] || '--')"
                         ></k9-text>
                         <ng-container *ngIf="row[columnIds.RETURN_CONNECTING_AIRPORT]">
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting airport: ' + (row[columnIds.RETURN_CONNECTING_AIRPORT] || '--')"
+                                [content]="'Connecting Airport: ' + (row[columnIds.RETURN_CONNECTING_AIRPORT] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting airline: ' + (row[columnIds.RETURN_CONNECTING_AIRLINE] || '--')"
+                                [content]="'Arrival Time: ' + (row[columnIds.RETURN_CONNECTING_ARRIVAL_TIME] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting flight number: ' + (row[columnIds.RETURN_CONNECTING_FLIGHT_NUMBER] || '--')"
+                                [content]="'Connecting Airline: ' + (row[columnIds.RETURN_CONNECTING_AIRLINE] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting arrival time: ' + (row[columnIds.RETURN_CONNECTING_ARRIVAL_TIME] || '--')"
+                                [content]="'Connecting Flight #: ' + (row[columnIds.RETURN_CONNECTING_FLIGHT_NUMBER] || '--')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting departure time: ' + (row[columnIds.RETURN_CONNECTING_DEPARTURE_TIME] || '--')"
+                                [content]="'Connecting Departure Time: ' + (row[columnIds.RETURN_CONNECTING_DEPARTURE_TIME] || '--')"
                             ></k9-text>
                         </ng-container>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Destination Airport: ' + (row[columnIds.RETURN_DESTINATION_AIRPORT] || '--')"
+                        ></k9-text>
+                        <k9-text
+                            [fontSize]="'0.8rem'"
+                            [content]="'Arrival Time: ' + (row[columnIds.RETURN_DESTINATION_ARRIVAL_TIME] || '--')"
+                        ></k9-text>
                     </div>
                 </div>
             </div>

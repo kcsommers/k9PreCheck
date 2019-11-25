@@ -8,21 +8,13 @@
         padding: $k9-spacing-lg;
         background-color: white;
     }
-    .k9-search-error-text {
-        color: $error;
-        text-align: center;
-        padding: $k9-spacing-md 0;
-        position: absolute;
-        width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
     .k9-logo-wrap {
         margin-right: $k9-spacing-lg;
         k9-text {
             display: inline-block;
             white-space: nowrap;
-            transform: translateY(-150%);
+            margin-left: $k9-spacing-sm;
+            transform: translateY(125%);
         }
     }
     img.k9-logo {
@@ -30,6 +22,8 @@
         width: 130px;
     }
     .k9-search-wrap {
+        flex: 1;
+        width: 100%;
         position: relative;
     }
     img.k9-dog {
@@ -41,41 +35,14 @@
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
         z-index: 10000;
     }
-    p.k9-tos-link {
-        position: absolute;
-        width: 100%;
-        left: 50%;
-        text-align: center;
-        padding: $k9-spacing-md 0;
-        transform: translateX(-50%);
-        font-size: 0.75rem;
-        color: $dark;
-        line-height: 1.25rem;
-        a {
-            color: $blue;
-        }
-    }
-    @media only screen and (max-width: 870px) {
+    @media only screen and (max-width: 880px) {
         .k9-header {
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: auto;
-            padding: $k9-spacing-md;
+            padding: $k9-spacing-lg;
         }
-        p.k9-tos-link {
-            position: initial;
-            transform: translateX(0%);
-            margin: 0 auto;
-            display: inline-block;
-            text-align: center;
-            left: 0%;
-        }
-        img.k9-dog {
-            top: 200px;
-        }
-    }
-    @media only screen and (max-width: 680px) {
         .k9-logo-wrap {
             margin-right: 0;
             display: flex;
@@ -85,6 +52,15 @@
                 margin-top: $k9-spacing-sm;
                 transform: translateY(0%);
             }
+        }
+        img.k9-dog {
+            right: 20%;
+            top: 175px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        img.k9-dog {
+            right: 10%;
         }
     }
 }

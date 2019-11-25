@@ -8,6 +8,9 @@ import { fromEvent, Subscription, BehaviorSubject } from 'rxjs';
 })
 export class SearchbarComponent implements OnInit, OnDestroy {
   @Input()
+  public searchError$: BehaviorSubject<boolean>;
+
+  @Input()
   public placeholder: string;
 
   @Input()
