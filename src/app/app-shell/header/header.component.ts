@@ -23,7 +23,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output()
   public clear = new EventEmitter<boolean>();
 
+  @Output()
+  public modeUpdated = new EventEmitter<string>();
+
   public searchButtonText$ = new BehaviorSubject('FIND');
+
+  public mode = 'trip';
 
   private _destroy$ = new Subject();
 
@@ -52,5 +57,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._destroy$.next(null);
     this._destroy$.unsubscribe();
+  }
+
+  public updateMode(mode: string) {
+    if (mode !== this.mode) {
+      this.mode = mode;
+      this.modeUpdated.emit(mode);
+    }
   }
 }
