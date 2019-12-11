@@ -1,34 +1,19 @@
 <div class="k9-searchbar-wrap">
-    <div class="k9-searchbar-search-container">
-        <input
-            class="k9-searchbar"
-            type="text"
-            [placeholder]="placeholder"
-            [(ngModel)]="searchTerm"
-            (focus)="focused = true"
-            (blur)="focused = false"
-            (ngModelChange)="searchTermChange($event)"
-        >
-        <span
-            #SearchBtn
-            class="k9-search-button"
-            [class.disabled]="!formValid"
-            (click)="buttonText === 'CLEAR' ? doClear() : (formValid && doSearch())"
-        >
-            {{buttonText}}
-        </span>
-    </div>
-    <p
-        *ngIf="!(searchError$ | async)"
-        class="k9-tos-link"
+    <input
+        class="k9-searchbar"
+        type="text"
+        [placeholder]="placeholder"
+        [(ngModel)]="searchTerm"
+        (focus)="focused = true"
+        (blur)="focused = false"
+        (ngModelChange)="searchTermChange($event)"
     >
-        By using this service, you agree to be bound by
-        <a href="#tos">terms and conditions</a>
-    </p>
-    <p
-        *ngIf="searchError$ | async"
-        class="k9-search-error-text"
+    <span
+        #SearchBtn
+        class="k9-search-button"
+        [class.disabled]="!formValid"
+        (click)="buttonText === 'CLEAR' ? doClear() : (formValid && doSearch())"
     >
-        NOT FOUND. PLEASE TRY AGAIN.
-    </p>
+        {{buttonText}}
+    </span>
 </div>

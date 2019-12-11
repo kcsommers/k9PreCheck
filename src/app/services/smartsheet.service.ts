@@ -30,13 +30,15 @@ export class SmartsheetService {
       };
   }
 
-  public getRow(id: string): Observable<any> {
+  public getRow(id: string, mode: 'trip' | 'member'): Observable<any> {
     const filtered = () => {
       // tslint:disable-next-line: max-line-length
       const imgs = ['img-src-dog', 'img-src-owner', 'img-src-crate', 'img-src-water', 'img-src-con1', 'img-src-con2', 'img-src-con3', 'img-src-con4'];
-      const row = this._k9Rows.find(r => r.cells.some(c => (
-        (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURN_AIRWAY_BILL) && c.value === id))
-      );
+      const row = this._k9Rows.find(r => r.cells.some(c => (mode === 'trip' ?
+        (c.columnId === ColumnIds.OUTBOUND_AIRWAY_BILL || c.columnId === ColumnIds.RETURN_AIRWAY_BILL) :
+        (c.columnId === ColumnIds.AKC_NUMBER)
+      ) && c.value === id));
+
       if (row && row.cells && row.cells.length) {
         const newRow = {};
         row.cells.forEach(cell => {
@@ -58,7 +60,7 @@ export class SmartsheetService {
             }
           }
         )
-      })
+      });
     }
   }
 

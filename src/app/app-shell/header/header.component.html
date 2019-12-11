@@ -4,48 +4,59 @@
             class="k9-logo"
             src="../../../assets/images/k9-logo.jpg"
             alt="k9PreCheck Logo"
-            style="width: 127px!important"
+            style="width: 127px !important"
         >
         <k9-text
             [content]="'Purebred Dog Shipping Specialists.'"
             [fontSize]="'1.2rem'"
         ></k9-text>
     </div>
-    <div class="k9-search-wrap">
-        <div class="k9-radio-inputs-wrap">
-            <div
-                class="k9-radio-btn"
-                [class.k9-radio-btn-active]="mode === 'trip'"
-                (click)="updateMode('trip')"
-            >
-                <div class="k9-radio-btn-outer">
-                    <div class="k9-radio-btn-inner"></div>
+    <div class="k9-header-actions-wrap">
+        <div class="k9-searchbar-wrap">
+            <div class="k9-radio-inputs-wrap">
+                <div
+                    class="k9-radio-btn"
+                    [class.k9-radio-btn-active]="modeService.mode === 'trip'"
+                    (click)="modeService.updateMode('trip'); searchButtonText$.next('FIND')"
+                >
+                    <div class="k9-radio-btn-outer">
+                        <div class="k9-radio-btn-inner"></div>
+                    </div>
+                    <k9-text [content]="'TRIP INFO'"></k9-text>
                 </div>
-                <k9-text [content]="'TRIP INFO'"></k9-text>
+                <div
+                    class="k9-radio-btn"
+                    [class.k9-radio-btn-active]="modeService.mode === 'member'"
+                    (click)="modeService.updateMode('member'); searchButtonText$.next('FIND')"
+                >
+                    <div class="k9-radio-btn-outer">
+                        <div class="k9-radio-btn-inner"></div>
+                    </div>
+                    <k9-text [content]="'MEMBER INFO'"></k9-text>
+                </div>
             </div>
-            <div
-                class="k9-radio-btn"
-                [class.k9-radio-btn-active]="mode === 'member'"
-                (click)="updateMode('member')"
-            >
-                <div class="k9-radio-btn-outer">
-                    <div class="k9-radio-btn-inner"></div>
-                </div>
-                <k9-text [content]="'MEMBER INFO'"></k9-text>
+            <k9-searchbar
+                [searchError$]="searchError$"
+                [placeholder]="searchbarPlaceholder"
+                [buttonText]="searchButtonText$ | async"
+                (search)="search.emit($event)"
+                (clear)="clear.emit($event)"
+            ></k9-searchbar>
+            <div class="k9-header-tos-wrap">
+                <p
+                    *ngIf="!(searchError$ | async)"
+                    class="k9-tos-link"
+                >
+                    By using this service, you agree to be bound by
+                    <a href="#tos">terms and conditions</a>
+                </p>
+                <p
+                    *ngIf="searchError$ | async"
+                    class="k9-search-error-text"
+                >
+                    NOT FOUND. PLEASE TRY AGAIN.
+                </p>
             </div>
         </div>
-        <k9-searchbar
-            [searchError$]="searchError$"
-            [placeholder]="'START HERE! ENTER AIR WAYBILL (AWB) NUMBER'"
-            [buttonText]="searchButtonText$ | async"
-            (search)="search.emit($event)"
-            (clear)="clear.emit($event)"
-        ></k9-searchbar>
-        <img
-            *ngIf="!(data$ | async) && !(fetching$ | async)"
-            class="k9-dog"
-            src="../../../assets/images/dog.png"
-            alt="Dog"
-        >
     </div>
 </header>

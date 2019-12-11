@@ -1,13 +1,10 @@
 @import '_variables';
 :host {
+    display: block;
     .k9-searchbar-wrap {
         width: 100%;
-        max-width: 500px;
         text-align: center;
         margin-left: auto;
-        position: relative;
-    }
-    .k9-searchbar-search-container {
         display: flex;
     }
     .k9-searchbar {
@@ -34,35 +31,11 @@
             cursor: initial;
         }
     }
-    .k9-search-error-text,
-    .k9-tos-link {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        text-align: center;
-        transform: translateY(125%);
-        width: 100%;
-    }
-    .k9-search-error-text {
-        color: $error;
-    }
-    .k9-tos-link {
-        color: $dark;
-        font-size: 0.75rem;
-        width: 100%;
-        a {
-            color: $blue;
-        }
-    }
+
     @media only screen and (max-width: 880px) {
-        .k9-searchbar-wrap {
-            margin: $k9-spacing-md auto $k9-spacing-md auto;
-        }
-        .k9-searchbar-search-container {
-            margin: $k9-spacing-lg 0;
-        }
+        // .k9-searchbar-wrap {
+        //     margin: $k9-spacing-md auto $k9-spacing-md auto;
+        // }
     }
 }
 

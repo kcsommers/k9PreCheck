@@ -3,6 +3,7 @@ import { SmartsheetService } from 'src/app/services/smartsheet.service';
 import { BehaviorSubject } from 'rxjs';
 import { ColumnIds } from '../../core/column-ids.enum';
 import { take } from 'rxjs/operators';
+import { AppModeService } from 'src/app/services/app-mode.service';
 
 @Component({
   selector: 'k9-landing-screen',
@@ -44,7 +45,7 @@ export class LandingScreenComponent implements OnInit {
     this.updateWindowSize(e.target['innerWidth']);
   }
 
-  constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef) {
+  constructor(private smartsheet: SmartsheetService, private cd: ChangeDetectorRef, public modeService: AppModeService) {
     // this.smartsheet.getK9PreCheckSheet().subscribe(r => {
     //   console.log('Sheet:::: ', r)
     // })
@@ -82,7 +83,7 @@ export class LandingScreenComponent implements OnInit {
     if (this.searchError$.value) {
       this.searchError$.next(false);
     }
-    this.smartsheet.getRow(searchTerm).pipe(take(1))
+    this.smartsheet.getRow(searchTerm, this.modeService.mode).pipe(take(1))
       .subscribe(row => {
         if (row) {
           this.data$.next(row);

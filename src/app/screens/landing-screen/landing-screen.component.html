@@ -7,9 +7,15 @@
 ></k9-header>
 <section class="k9-landing-body">
     <div
-        *ngIf="!(data$ | async)"
-        class="k9-landing-height-guard"
-    ></div>
+        *ngIf="!(data$ | async) && !(fetching$ | async)"
+        class="k9-landing-dog-img-wrap"
+    >
+        <img
+            class="k9-dog"
+            src="../../../assets/images/dog.png"
+            alt="Dog"
+        >
+    </div>
     <div
         *ngIf="!(data$ | async) && fetching$ | async"
         class="k9-landing-spinner-wrap"
@@ -72,7 +78,6 @@
                                 ></k9-card-image>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="k9-dog-card-owner-section">
@@ -105,6 +110,14 @@
                 <h4>CONSIGNEE(S)</h4>
             </div>
             <div
+                *ngIf="modeService.mode === 'member'"
+                card-body
+                class="k9-card-body consignee-card-body k9-card-body-empty"
+            >
+                <k9-text [content]="'To view consignee information, search for trip info.'"></k9-text>
+            </div>
+            <div
+                *ngIf="modeService.mode === 'trip'"
                 card-body
                 class="k9-card-body consignee-card-body"
             >
@@ -161,7 +174,6 @@
                     class="k9-card-item consignee-card-consignee"
                 >
                     <div class="k9-card-image-wrap">
-
                         <k9-card-image
                             [src]="row[columnIds.CONSIGNEE4_PICTURE]"
                             [alt]="row[columnIds.CONSIGNEE4_NAME]"
@@ -189,6 +201,14 @@
                 ></k9-text>
             </div>
             <div
+                *ngIf="modeService.mode === 'member'"
+                card-body
+                class="k9-card-body k9-travel-card-body k9-card-body-empty"
+            >
+                <k9-text [content]="'To view travel information, search for trip info.'"></k9-text>
+            </div>
+            <div
+                *ngIf="modeService.mode === 'trip'"
                 card-body
                 class="k9-card-body k9-travel-card-body"
             >

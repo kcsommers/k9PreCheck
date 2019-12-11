@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AppModeService } from 'src/app/services/app-mode.service';
 
 @Component({
   selector: 'k9-header',
@@ -28,11 +29,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public searchButtonText$ = new BehaviorSubject('FIND');
 
-  public mode = 'trip';
-
   private _destroy$ = new Subject();
 
-  constructor() { }
+  public get searchbarPlaceholder() {
+    return `START HERE! ENTER ${this.modeService.mode === 'trip' ? 'AIRWAY BILL (AWB)' : 'AKC'} NUMBER`;
+  }
+
+  constructor(public modeService: AppModeService) { }
 
   ngOnInit() {
     this.data$.pipe(takeUntil(this._destroy$))
@@ -43,13 +46,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.searchButtonText$.next('FIND');
         }
       },
-        err => this.searchButtonText$.next('FIND')
+        err => this.searchButtonText$.next('CLEAR')
       );
 
     this.searchError$.pipe(takeUntil(this._destroy$))
       .subscribe(err => {
         if (err) {
-          this.searchButtonText$.next('FIND');
+          this.searchButtonText$.next('CLEAR');
         }
       });
   }
@@ -57,12 +60,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._destroy$.next(null);
     this._destroy$.unsubscribe();
-  }
-
-  public updateMode(mode: string) {
-    if (mode !== this.mode) {
-      this.mode = mode;
-      this.modeUpdated.emit(mode);
-    }
   }
 }

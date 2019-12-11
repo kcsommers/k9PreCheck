@@ -13,6 +13,18 @@
             margin-bottom: 40px;
         }
     }
+    .k9-landing-dog-img-wrap {
+        max-width: 500px;
+        margin-left: auto;
+        min-height: 250px;
+        text-align: center;
+    }
+    img.k9-dog {
+        display: inline-block;
+        width: 295px;
+        animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+        z-index: 10000;
+    }
     .k9-landing-spinner-wrap {
         animation: fadeIn 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
         position: absolute;
@@ -23,9 +35,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    .k9-landing-height-guard {
-        min-height: 250px;
     }
     .k9-card-header {
         padding: $k9-spacing-md $k9-spacing-md 0 $k9-spacing-md;
@@ -64,6 +73,9 @@
     .item-sm {
         display: none;
     }
+    .k9-card-body-empty {
+        margin: $k9-spacing-md 0;
+    }
     // Consignee card
     .consignee-card-body {
         flex-wrap: wrap;
@@ -92,6 +104,11 @@
     }
     .travel-card-info-body {
         margin-top: $k9-spacing-md;
+    }
+    @media only screen and (max-width: 880px) {
+        .k9-landing-dog-img-wrap {
+            max-width: none;
+        }
     }
     @media only screen and (max-width: 1100px) {
         .dog-card-dog,
