@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AppModeService {
   private _mode: 'trip' | 'member' = 'trip';
+
   public get mode(): 'trip' | 'member' {
     return this._mode;
   }

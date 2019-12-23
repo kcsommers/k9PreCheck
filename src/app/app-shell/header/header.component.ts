@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angu
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppModeService } from 'src/app/services/app-mode.service';
+import { SmartsheetService } from 'src/app/services/smartsheet.service';
+import { Sheets } from 'src/app/core/public-api';
 
 @Component({
   selector: 'k9-header',
@@ -35,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return `START HERE! ENTER ${this.modeService.mode === 'trip' ? 'AIRWAY BILL (AWB)' : 'AKC'} NUMBER`;
   }
 
-  constructor(public modeService: AppModeService) { }
+  constructor(public modeService: AppModeService, private smartsheet: SmartsheetService) { }
 
   ngOnInit() {
     this.data$.pipe(takeUntil(this._destroy$))
@@ -60,5 +62,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._destroy$.next(null);
     this._destroy$.unsubscribe();
+  }
+
+  public updateMode(mode: 'trip' | 'member') {
+    this.modeService.updateMode(mode);
+    if (mode === 'member' && !this.smartsheet.sheetMap.has(Sheets.K9_PRE_CHECK_REGISTRATION)) {
+      this.smartsheet.fetchSheet(Sheets.K9_PRE_CHECK_REGISTRATION);
+    }
+    this.searchButtonText$.next('FIND');
   }
 }

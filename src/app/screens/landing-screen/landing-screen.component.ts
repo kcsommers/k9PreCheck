@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild, HostListener } from '@angular/core';
 import { SmartsheetService } from 'src/app/services/smartsheet.service';
 import { BehaviorSubject } from 'rxjs';
-import { ColumnIds } from '../../core/column-ids.enum';
+import { K9ColumnIds, K9RegistrationColumnIds } from '../../core/column-ids.enum';
 import { take } from 'rxjs/operators';
 import { AppModeService } from 'src/app/services/app-mode.service';
+import { Sheets } from 'src/app/core/public-api';
 
 @Component({
   selector: 'k9-landing-screen',
@@ -13,7 +14,7 @@ import { AppModeService } from 'src/app/services/app-mode.service';
 export class LandingScreenComponent implements OnInit {
   public searchError$ = new BehaviorSubject(false);
   public data$ = new BehaviorSubject(null);
-  public columnIds = ColumnIds;
+  public columnIds: any = K9ColumnIds;
   public fetching$ = new BehaviorSubject(false);
   public windowSize = 'windowMd';
   public imageWidths = {
@@ -83,9 +84,13 @@ export class LandingScreenComponent implements OnInit {
     if (this.searchError$.value) {
       this.searchError$.next(false);
     }
-    this.smartsheet.getRow(searchTerm, this.modeService.mode).pipe(take(1))
+
+    const sheet = this.modeService.mode === 'trip' ? Sheets.K9_PRE_CHECK : Sheets.K9_PRE_CHECK_REGISTRATION;
+
+    this.smartsheet.getRow(searchTerm, sheet).pipe(take(1))
       .subscribe(row => {
         if (row) {
+          this.columnIds = sheet === Sheets.K9_PRE_CHECK ? K9ColumnIds : K9RegistrationColumnIds;
           this.data$.next(row);
         } else {
           this.searchError$.next(true);

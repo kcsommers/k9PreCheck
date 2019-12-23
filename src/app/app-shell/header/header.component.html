@@ -17,7 +17,7 @@
                 <div
                     class="k9-radio-btn"
                     [class.k9-radio-btn-active]="modeService.mode === 'trip'"
-                    (click)="modeService.updateMode('trip'); searchButtonText$.next('FIND')"
+                    (click)="updateMode('trip')"
                 >
                     <div class="k9-radio-btn-outer">
                         <div class="k9-radio-btn-inner"></div>
@@ -27,7 +27,7 @@
                 <div
                     class="k9-radio-btn"
                     [class.k9-radio-btn-active]="modeService.mode === 'member'"
-                    (click)="modeService.updateMode('member'); searchButtonText$.next('FIND')"
+                    (click)="updateMode('member')"
                 >
                     <div class="k9-radio-btn-outer">
                         <div class="k9-radio-btn-inner"></div>

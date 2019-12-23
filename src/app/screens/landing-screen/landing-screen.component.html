@@ -46,9 +46,17 @@
                         </div>
                         <div class="dog-card-dog-item item-lg">
                             <k9-card-image
+                                *ngIf="modeService.mode === 'trip'"
                                 [src]="row[columnIds.PICTURE_OF_CRATE]"
                                 [alt]="'Picture of Crate'"
                                 [label]="'Crate, ' + row[columnIds.CRATE_TYPE] + ', ' + row[columnIds.CRATE_SIZE]"
+                                [imageWidth]="imageWidths.dogCard[windowSize]"
+                            ></k9-card-image>
+                            <k9-card-image
+                                *ngIf="modeService.mode === 'member'"
+                                [src]="row[columnIds.PICTURE_OF_CRATE]"
+                                [alt]="'Picture of Crate'"
+                                [label]="'Crate'"
                                 [imageWidth]="imageWidths.dogCard[windowSize]"
                             ></k9-card-image>
                         </div>
