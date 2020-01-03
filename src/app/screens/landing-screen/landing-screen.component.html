@@ -102,7 +102,10 @@
                                     [imageWidth]="imageWidths.owner[windowSize]"
                                 ></k9-card-image>
                             </div>
-                            <div class="k9-card-details-wrap">
+                            <div
+                                *ngIf="modeService.mode === 'trip'"
+                                class="k9-card-details-wrap"
+                            >
                                 <k9-card-details [details]="[row[columnIds.OWNER_ADDRESS], row[columnIds.OWNER_CITY] + ', ' + row[columnIds.OWNER_STATE] + ' ' + row[columnIds.OWNER_ZIP_CODE], row[columnIds.OWNER_PHONE], row[columnIds.OWNER_EMAIL]]"></k9-card-details>
                             </div>
                         </div>
