@@ -208,15 +208,14 @@
                     [fontWeight]="'bold'"
                 ></k9-text>
             </div>
-            <div
+            <!-- <div
                 *ngIf="modeService.mode === 'member'"
                 card-body
                 class="k9-card-body k9-travel-card-body k9-card-body-empty"
             >
                 <k9-text [content]="'To view travel information, search for trip info.'"></k9-text>
-            </div>
+            </div> -->
             <div
-                *ngIf="modeService.mode === 'trip'"
                 card-body
                 class="k9-card-body k9-travel-card-body"
             >
@@ -232,23 +231,23 @@
                         <div class="travel-card-event-info">
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="row[columnIds.EVENT_NAME]"
+                                [content]="'Name: ' + (modeService.mode === 'trip' ? row[columnIds.EVENT_NAME] : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Entry Confirmation: ' + (row[columnIds.ENTRY_CONFIRMATION])"
+                                [content]="'Entry Confirmation: ' + (modeService.mode === 'trip' ? row[columnIds.ENTRY_CONFIRMATION] : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Location: ' + (row[columnIds.EVENT_LOCATION] || '--')"
+                                [content]="'Location: ' + (modeService.mode === 'trip' ? (row[columnIds.EVENT_LOCATION] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Start Date: ' + (row[columnIds.EVENT_START_DATE] || '--')"
+                                [content]="'Start Date: ' + (modeService.mode === 'trip' ? (row[columnIds.EVENT_START_DATE] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'End Date: ' + (row[columnIds.EVENT_FINISH_DATE] || '--')"
+                                [content]="'End Date: ' + (modeService.mode === 'trip' ? (row[columnIds.EVENT_FINISH_DATE] || '--') : '')"
                             ></k9-text>
                         </div>
                     </div>
@@ -264,57 +263,57 @@
                     <div class="travel-card-info-body">
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Airway Bill #: ' + (row[columnIds.OUTBOUND_AIRWAY_BILL] || '--')"
+                            [content]="'Airway Bill #: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_AIRWAY_BILL] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure Date: ' + (row[columnIds.DESIRED_DEPARTURE_DATE] || '--')"
+                            [content]="'Departure Date: ' + (modeService.mode === 'trip' ? (row[columnIds.DESIRED_DEPARTURE_DATE] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Originating Airport: ' + (row[columnIds.OUTBOUND_ORIGINATING_AIRPORT] || '--')"
+                            [content]="'Originating Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_ORIGINATING_AIRPORT] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Airline: ' + (row[columnIds.OUTBOUND_AIRLINE] || '--')"
+                            [content]="'Airline: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_AIRLINE] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Flight #: ' + (row[columnIds.OUTBOUND_FLIGHT_NUMBER] || '--')"
+                            [content]="'Flight #: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_FLIGHT_NUMBER] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure Time: ' + (row[columnIds.OUTBOUND_DEPARTURE_TIME] || '--')"
+                            [content]="'Departure Time: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_DEPARTURE_TIME] || '--') : '')"
                         ></k9-text>
                         <ng-container *ngIf="row[columnIds.OUTBOUND_CONNECTING_AIRPORT]">
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Airport: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRPORT] || '--')"
+                                [content]="'Connecting Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_CONNECTING_AIRPORT] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Arrival Time: ' + (row[columnIds.OUTBOUND_CONNECTING_ARRIVAL_TIME] || '--')"
+                                [content]="'Arrival Time: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_CONNECTING_ARRIVAL_TIME] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Airline: ' + (row[columnIds.OUTBOUND_CONNECTING_AIRLINE] || '--')"
+                                [content]="'Connecting Airline: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_CONNECTING_AIRLINE] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Flight #: ' + (row[columnIds.OUTBOUND_CONNECTING_FLIGHT_NUMBER] || '--')"
+                                [content]="'Connecting Flight #: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_CONNECTING_FLIGHT_NUMBER] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Departure Time: ' + (row[columnIds.OUTBOUND_CONNECTING_DEPARTURE_TIME] || '--')"
+                                [content]="'Connecting Departure Time: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_CONNECTING_DEPARTURE_TIME] || '--') : '')"
                             ></k9-text>
                         </ng-container>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Destination Airport: ' + (row[columnIds.OUTBOUND_DESTINATION_AIRPORT] || '--')"
+                            [content]="'Destination Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_DESTINATION_AIRPORT] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Arrival Time: ' + (row[columnIds.OUTBOUND_DESTINATION_ARRIVAL_TIME ] || '--')"
+                            [content]="'Arrival Time: ' + (modeService.mode === 'trip' ? (row[columnIds.OUTBOUND_DESTINATION_ARRIVAL_TIME ] || '--') : '')"
                         ></k9-text>
                     </div>
                 </div>
@@ -329,57 +328,57 @@
                     <div class="travel-card-info-body">
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Airway Bill #: ' + (row[columnIds.RETURN_AIRWAY_BILL] || '--')"
+                            [content]="'Airway Bill #: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_AIRWAY_BILL] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure Date: ' + (row[columnIds.RETURN_DATE] || '--')"
+                            [content]="'Departure Date: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_DATE] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Originating Airport: ' + (row[columnIds.RETURN_ORIGINATING_AIRPORT] || '--')"
+                            [content]="'Originating Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_ORIGINATING_AIRPORT] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Airline: ' + (row[columnIds.RETURN_AIRLINE] || '--')"
+                            [content]="'Airline: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_AIRLINE] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Flight #: ' + (row[columnIds.RETURN_FLIGHT_NUMBER] || '--')"
+                            [content]="'Flight #: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_FLIGHT_NUMBER] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Departure Time: ' + (row[columnIds.RETURN_DEPARTURE_TIME] || '--')"
+                            [content]="'Departure Time: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_DEPARTURE_TIME] || '--') : '')"
                         ></k9-text>
                         <ng-container *ngIf="row[columnIds.RETURN_CONNECTING_AIRPORT]">
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Airport: ' + (row[columnIds.RETURN_CONNECTING_AIRPORT] || '--')"
+                                [content]="'Connecting Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_CONNECTING_AIRPORT] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Arrival Time: ' + (row[columnIds.RETURN_CONNECTING_ARRIVAL_TIME] || '--')"
+                                [content]="'Arrival Time: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_CONNECTING_ARRIVAL_TIME] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Airline: ' + (row[columnIds.RETURN_CONNECTING_AIRLINE] || '--')"
+                                [content]="'Connecting Airline: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_CONNECTING_AIRLINE] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Flight #: ' + (row[columnIds.RETURN_CONNECTING_FLIGHT_NUMBER] || '--')"
+                                [content]="'Connecting Flight #: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_CONNECTING_FLIGHT_NUMBER] || '--') : '')"
                             ></k9-text>
                             <k9-text
                                 [fontSize]="'0.8rem'"
-                                [content]="'Connecting Departure Time: ' + (row[columnIds.RETURN_CONNECTING_DEPARTURE_TIME] || '--')"
+                                [content]="'Connecting Departure Time: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_CONNECTING_DEPARTURE_TIME] || '--') : '')"
                             ></k9-text>
                         </ng-container>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Destination Airport: ' + (row[columnIds.RETURN_DESTINATION_AIRPORT] || '--')"
+                            [content]="'Destination Airport: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_DESTINATION_AIRPORT] || '--') : '')"
                         ></k9-text>
                         <k9-text
                             [fontSize]="'0.8rem'"
-                            [content]="'Arrival Time: ' + (row[columnIds.RETURN_DESTINATION_ARRIVAL_TIME] || '--')"
+                            [content]="'Arrival Time: ' + (modeService.mode === 'trip' ? (row[columnIds.RETURN_DESTINATION_ARRIVAL_TIME] || '--') : '')"
                         ></k9-text>
                     </div>
                 </div>
